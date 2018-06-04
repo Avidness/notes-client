@@ -12,7 +12,7 @@ class App extends React.Component {
 
         <header className="App-header">
           <img src={img_gear} className="App-logo" alt="logo" />
-          <h1 className="App-title">ToolShed</h1>
+          <h1 className="App-title">Notes</h1>
         </header>
 
         <main>

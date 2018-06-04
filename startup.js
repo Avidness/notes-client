@@ -1,7 +1,7 @@
 let chalk = require('chalk');
 let figlet = require('figlet');
 
-figlet('ToolShed', {
+figlet('Notes', {
     font: 'epic'
 },function(err, data){
     if(err){
