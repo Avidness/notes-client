@@ -18,9 +18,9 @@ class ItemList extends React.Component {
     var itemRows = this.props.items.list.map(function (item) {
       return (
         <div key={item.id}>
-          <strong>{item.title}</strong>
+          <strong>{item.label}</strong>
           <br/> 
-          <p>{item.body}</p>
+          <p>{item.description}</p>
         </div>
       );
     });

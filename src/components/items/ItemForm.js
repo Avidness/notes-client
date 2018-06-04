@@ -8,7 +8,7 @@ class ItemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
+      label: '',
       body: ''
     };
 
@@ -24,8 +24,8 @@ class ItemForm extends Component {
     e.preventDefault();
 
     const new_item = {
-      title: this.state.title,
-      body: this.state.body
+      label: this.state.label,
+      description: this.state.description
     };
 
     this.props.createItem(new_item);
@@ -37,23 +37,23 @@ class ItemForm extends Component {
         <h1>Add Item</h1>
         <form onSubmit={this.onSubmit}>
           <div>
-            <label>Title: </label>
+            <label>Label: </label>
             <br />
             <input
               type="text"
-              name="title"
+              name="label"
               onChange={this.onChange}
               value={this.state.title}
             />
           </div>
           <br />
           <div>
-            <label>Body: </label>
+            <label>Description: </label>
             <br />
             <textarea
-              name="body"
+              name="description"
               onChange={this.onChange}
-              value={this.state.body}
+              value={this.state.description}
             />
           </div>
           <br />

@@ -2,7 +2,9 @@ export const FETCH_ITEMS = 'FETCH_ITEMS';
 export const NEW_ITEM = 'NEW_ITEM';
 
 export const fetchItems = () => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+  fetch('http://localhost:5000/api/item', {
+    method: 'GET',
+  })
   .then(res => res.json())
   .then(item_list =>
     dispatch({
@@ -13,7 +15,7 @@ export const fetchItems = () => dispatch => {
 };
 
 export const createItem = itemData => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
+  fetch('http://localhost:5000/api/item', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
