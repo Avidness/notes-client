@@ -9,7 +9,7 @@ class ItemForm extends Component {
     super(props);
     this.state = {
       label: '',
-      body: ''
+      description: ''
     };
 
     this.onChange = this.onChange.bind(this);
@@ -43,7 +43,7 @@ class ItemForm extends Component {
               type="text"
               name="label"
               onChange={this.onChange}
-              value={this.state.title}
+              value={this.state.label}
             />
           </div>
           <br />
