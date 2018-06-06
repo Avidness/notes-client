@@ -1,8 +1,7 @@
 import { FETCH_ITEMS, NEW_ITEM, DELETE_ITEM } from '../actions/itemActions';
 
 const initialState = {
-  list: [],
-  new: {}
+  list: []
 };
 
 export default function(state = initialState, action) {
@@ -15,7 +14,7 @@ export default function(state = initialState, action) {
     case NEW_ITEM:
       return {
         ...state,
-        new: action.payload
+        list: [...state.list, action.payload]
       };
     case DELETE_ITEM:
       return {

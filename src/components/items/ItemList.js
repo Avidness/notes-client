@@ -9,11 +9,6 @@ class ItemList extends React.Component {
   componentDidMount(){
     this.props.onFetchItems();
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.items.new) {
-      this.props.items.list.unshift(nextProps.items.new);
-    }
-  }
   render() {
     var itemRows = this.props.items.list.map(function (item) {
       return ( <ItemRow key={item.id} item={item} /> );
