@@ -1,5 +1,6 @@
 export const FETCH_ITEMS = 'FETCH_ITEMS';
 export const NEW_ITEM = 'NEW_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
 
 export const fetchItems = () => dispatch => {
   fetch('http://localhost:5000/api/item', {
@@ -29,4 +30,18 @@ export const createItem = itemData => dispatch => {
       payload: new_item
     })
   );
+};
+
+export const deleteItem = item_to_delete => dispatch => {
+  fetch('http://localhost:5000/api/item/' + item_to_delete.id, {
+    method: 'DELETE'
+  })
+  .then((response) => {
+    dispatch({
+      type: DELETE_ITEM,
+      payload: item_to_delete.id
+    })
+  }).catch((err) => {
+      alert("There was a problem deleting the item.")
+  });
 };

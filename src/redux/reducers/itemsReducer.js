@@ -1,4 +1,4 @@
-import { FETCH_ITEMS, NEW_ITEM } from '../actions/itemActions';
+import { FETCH_ITEMS, NEW_ITEM, DELETE_ITEM } from '../actions/itemActions';
 
 const initialState = {
   list: [],
@@ -16,6 +16,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         new: action.payload
+      };
+    case DELETE_ITEM:
+      return {
+        ...state,
+        list: state.list.filter(({ id }) => id !== action.payload)
       };
     default:
       return state;
