@@ -22,4 +22,4 @@ const mapDispatchToProps = {
   onDeleteItem: deleteItem
 }
 
-export default connect(null, mapDispatchToProps )(ItemRow);
+export default connect(null, mapDispatchToProps)(ItemRow);
