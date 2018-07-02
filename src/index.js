@@ -5,7 +5,6 @@ import store from './redux/store';
 
 import registerServiceWorker from './registerServiceWorker';
 import App from './App';
-import './index.css';
 
 render(
   <Provider store={store}>
