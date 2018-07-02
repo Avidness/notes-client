@@ -1,3 +1,3 @@
-# Toolshed
+# Notes
 
-WIP
+React / Redux app for storing notes
