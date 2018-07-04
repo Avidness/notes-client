@@ -33,14 +33,19 @@ export const createItem = item_to_create => dispatch => {
   );
 };
 
-export const updateItem = item_to_update => {
+export const updateItem = item_to_update => dispatch => {
   fetch('http://localhost:5000/api/item/' + item_to_update.id, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
     },
     body: JSON.stringify(item_to_update)
-  });
+  }).then(res =>
+    dispatch({
+      type: UPDATE_ITEM,
+      payload: res
+    })
+  );
 };
 
 export const deleteItem = item_to_delete => dispatch => {
