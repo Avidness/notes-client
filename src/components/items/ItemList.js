@@ -10,8 +10,8 @@ class ItemList extends React.Component {
     this.props.onFetchItems();
   }
   render() {
-    var itemRows = this.props.items.list.map(function (item) {
-      return ( <ItemRow key={item.id} item={item} /> );
+    var itemRows = this.props.items.list.map(function (item, i) {
+      return ( <ItemRow key={i} item={item} /> );
     });
     return (
       <div className="item-list">

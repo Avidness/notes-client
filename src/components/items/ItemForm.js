@@ -1,41 +1,29 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-import { createItem } from '../../redux/actions/itemActions';
 
 class ItemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       label: '',
       description: ''
     };
-
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
-
+  componentDidMount(){
+    if(this.props.item){
+      this.setState({id: this.props.item.id});
+      this.setState({label: this.props.item.label});
+      this.setState({description: this.props.item.description});
+    }
+  }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const new_item = {
-      label: this.state.label,
-      description: this.state.description
-    };
-
-    this.props.createItem(new_item);
-  }
-
   render() {
     return (
       <div>
         <h1>Add Item</h1>
-        <form onSubmit={this.onSubmit}>
           <div>
             <label>Label: </label>
             <br />
@@ -53,19 +41,21 @@ class ItemForm extends Component {
             <textarea
               name="description"
               onChange={this.onChange}
-              value={this.state.description}
-            />
+              value={this.state.description} />
           </div>
           <br />
-          <button type="submit">Submit</button>
-        </form>
+          <button onClick={() => 
+            this.props.handleSubmit({
+              id: this.state.id,
+              label: this.state.label,
+              description: this.state.description
+            })}>
+            Submit
+          </button>
+          <button onClick={() => this.props.handleClose}>Cancel</button>
       </div>
     );
   }
 }
 
-ItemForm.propTypes = {
-  createItem: PropTypes.func.isRequired
-};
-
-export default connect(null, { createItem })(ItemForm);
+export default ItemForm;

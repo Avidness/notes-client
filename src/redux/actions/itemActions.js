@@ -40,10 +40,12 @@ export const updateItem = item_to_update => dispatch => {
       'content-type': 'application/json'
     },
     body: JSON.stringify(item_to_update)
-  }).then(res =>
+  })
+  .then(res => res.json())
+  .then(updated_item =>
     dispatch({
       type: UPDATE_ITEM,
-      payload: res
+      payload: updated_item
     })
   );
 };

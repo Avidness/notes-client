@@ -17,8 +17,13 @@ export default function(state = initialState, action) {
         list: [...state.list, action.payload]
       };
     case UPDATE_ITEM:
+      var updated_list = state.list.map((item) => 
+        item.Id === action.payload.Id
+        ? action.payload
+        : item);
       return {
-        ...state
+        ...state,
+        list: updated_list
       };
     case DELETE_ITEM:
       return {
