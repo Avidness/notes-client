@@ -1,32 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { fetchItems } from '../../redux/actions/itemActions';
 
 import ItemRow from './ItemRow';
+import ItemForm from './ItemForm';
 
-class ItemList extends React.Component {
-  componentDidMount(){
-    this.props.onFetchItems();
-  }
-  render() {
-    var itemRows = this.props.items.list.map(function (item, i) {
-      return ( <ItemRow key={i} item={item} /> );
-    });
-    return (
-      <div className="item-list">
-        {itemRows}
-      </div>
-    );
-  }
+const ItemList = (props) => {
+  return (
+    <div className="item-list">
+      <h2>Items</h2>
+      {props.items.list.map(function (item, i) {
+        return (!item.editing 
+          ? <ItemRow key={i} 
+              item={item}
+              startEditing={() => props.startEditing(item.id)}
+              deleteItem={() => props.deleteItem(item)} /> 
+          : <ItemForm key={i} 
+              item={item} 
+              cancelEditing={() => props.cancelEditing(item.id)}
+              updateItem={() => props.updateItem(item)} /> )})
+      }
+    </div>
+  )
 }
 
-const mapStateToProps = state => ({
-  items: state.items
-});
-
-const mapDispatchToProps = {
-  onFetchItems: fetchItems
-}
-
-export default connect(mapStateToProps, mapDispatchToProps )(ItemList);
+export default ItemList;
