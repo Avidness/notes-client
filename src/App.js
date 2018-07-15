@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Items from './pages/Items'
+import ItemContainer from './containers/ItemContainer'
 
 import img_gear from './images/gear.svg';
 import './App.css';
@@ -16,7 +16,7 @@ class App extends React.Component {
         </header>
 
         <main>
-          <Items />
+          <ItemContainer />
         </main>
       </div>
     );
