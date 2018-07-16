@@ -28,7 +28,7 @@ class ItemForm extends React.Component {
           name="description"
           onChange={this.onChange}
           defaultValue={this.props.item.description} />
-        <button onClick={() => this.props.updateItem(this.state.item)}>
+        <button onClick={() => this.props.onSubmit(this.state.item)}>
             save
         </button>
         <button onClick={this.props.cancelEditing}>

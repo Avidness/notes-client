@@ -6,6 +6,11 @@ import ItemForm from './ItemForm';
 const ItemList = (props) => {
   return (
     <div className="item-list">
+
+      <ItemForm 
+        item={{label: '', description: ''}} 
+        onSubmit={props.createItem} />
+
       <h2>Items</h2>
       {props.items.list.map(function (item, i) {
         return (!item.editing 
@@ -16,7 +21,7 @@ const ItemList = (props) => {
           : <ItemForm key={i} 
               item={item} 
               cancelEditing={() => props.cancelEditing(item.id)}
-              updateItem={() => props.updateItem(item)} /> )})
+              onSubmit={props.updateItem} /> )})
       }
     </div>
   )
