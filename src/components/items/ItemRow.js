@@ -19,5 +19,4 @@ export const ItemRow = (props) => {
   );
 }
 
-
 export default ItemRow;
