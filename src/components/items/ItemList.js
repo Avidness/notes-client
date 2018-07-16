@@ -6,14 +6,6 @@ import ItemForm from './ItemForm';
 const ItemList = (props) => {
   return (
     <div className="item-list">
-
-      {props.openCreation
-      ? <ItemForm 
-        item={{label: '', description: ''}} 
-        cancel={props.cancelCreating}
-        onSubmit={props.createItem} />
-      : <button onClick={props.startCreating}>new item</button>}
-
       <h2>Items</h2>
       {props.items.map(function (item, i) {
         return (!item.editing 

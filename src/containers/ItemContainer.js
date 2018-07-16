@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ItemList from '../components/items/ItemList';
+import ItemNew from '../components/items/ItemNew';
 import * as ItemActions from '../redux/actions/itemActions';
 
 class ItemContainer extends React.Component {
@@ -11,16 +12,18 @@ class ItemContainer extends React.Component {
   render() {
     return (
       <div className="item-page">
-        <ItemList 
-          items={this.props.items} 
+        <ItemNew
           openCreation={this.props.openCreation} 
           createItem={this.props.onCreateItem}
+          startCreating={this.props.onStartCreating}
+          cancelCreating={this.props.onCancelCreating}
+          />
+        <ItemList 
+          items={this.props.items} 
           updateItem={this.props.onUpdateItem}
           deleteItem = {this.props.onDeleteItem}
           startEditing={this.props.onStartEditing}
           cancelEditing={this.props.onCancelEditing}
-          startCreating={this.props.onStartCreating}
-          cancelCreating={this.props.onCancelCreating}
           />
       </div>
     );
