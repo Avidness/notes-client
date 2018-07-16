@@ -4,6 +4,8 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const CANCEL_EDITING = 'CANCEL_EDITING';
 export const START_EDITING = 'START_EDITING';
+export const CANCEL_CREATING = 'CANCEL_CREATING';
+export const START_CREATING = 'START_CREATING';
 
 export const fetchItems = () => dispatch => {
   fetch('http://localhost:5000/api/item', {
@@ -77,5 +79,17 @@ export const cancelEditing = id => {
   return {
       type: CANCEL_EDITING,
       payload: id
+  }
+}
+
+export const startCreating = () => {
+  return {
+      type: START_CREATING
+  }
+}
+
+export const cancelCreating = () => {
+  return {
+      type: CANCEL_CREATING
   }
 }

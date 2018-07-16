@@ -31,7 +31,7 @@ class ItemForm extends React.Component {
         <button onClick={() => this.props.onSubmit(this.state.item)}>
             save
         </button>
-        <button onClick={this.props.cancelEditing}>
+        <button onClick={this.props.cancel}>
             cancel
         </button>
       </div>

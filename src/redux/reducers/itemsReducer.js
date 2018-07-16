@@ -1,53 +1,63 @@
-import { FETCH_ITEMS, NEW_ITEM, UPDATE_ITEM, DELETE_ITEM, START_EDITING, CANCEL_EDITING } from '../actions/itemActions';
+import * as Actions from '../actions/itemActions';
 
 const initialState = {
   list: [],
-  item: {}
+  openCreation: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_ITEMS:
+    case Actions.FETCH_ITEMS:
       return {
         ...state,
         list: action.payload
       };
-    case NEW_ITEM:
+    case Actions.NEW_ITEM:
       return {
         ...state,
+        openCreation: false,
         list: [...state.list, action.payload]
       };
-    case UPDATE_ITEM:
-      var updated_list = state.list.map((item) => 
-        item.id === action.payload.id
-        ? action.payload
-        : item);
+    case Actions.UPDATE_ITEM:
       return {
         ...state,
-        list: updated_list
+        list: state.list.map((item) => 
+                item.id === action.payload.id
+                ? action.payload
+                : item)
       };
-    case DELETE_ITEM:
+    case Actions.DELETE_ITEM:
       return {
         ...state,
         list: state.list.filter(({ id }) => id !== action.payload)
       };
-    case START_EDITING:
-      var new_list = state.list.map((item) => 
-        item.id === action.payload
-        ?  {...item, editing: true}
-        : item);
+    case Actions.START_EDITING:
       return {
         ...state,
-        list: new_list
+        list: state.list.map((item) => 
+                item.id === action.payload
+                ?  {...item, editing: true}
+                : item)
       };
-    case CANCEL_EDITING:
-      var new_list2 = state.list.map((item) => 
-        item.id === action.payload
-        ?  {...item, editing: false}
-        : item);
+    case Actions.CANCEL_EDITING:
       return {
         ...state,
-        list: new_list2
+        list: state.list.map((item) => 
+                item.id === action.payload
+                ?  {...item, editing: false}
+                : item)
+      };
+    
+    case Actions.START_CREATING:
+      return {
+        ...state,
+        openCreation: true
+      };
+      
+    case Actions.CANCEL_CREATING:
+      return {
+        ...state,
+        openCreation: false
       };
     default:
       return state;

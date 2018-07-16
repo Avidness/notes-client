@@ -7,12 +7,15 @@ const ItemList = (props) => {
   return (
     <div className="item-list">
 
-      <ItemForm 
+      {props.openCreation
+      ? <ItemForm 
         item={{label: '', description: ''}} 
+        cancel={props.cancelCreating}
         onSubmit={props.createItem} />
+      : <button onClick={props.startCreating}>new item</button>}
 
       <h2>Items</h2>
-      {props.items.list.map(function (item, i) {
+      {props.items.map(function (item, i) {
         return (!item.editing 
           ? <ItemRow key={i} 
               item={item}
@@ -20,7 +23,7 @@ const ItemList = (props) => {
               deleteItem={() => props.deleteItem(item)} /> 
           : <ItemForm key={i} 
               item={item} 
-              cancelEditing={() => props.cancelEditing(item.id)}
+              cancel={() => props.cancelEditing(item.id)}
               onSubmit={props.updateItem} /> )})
       }
     </div>

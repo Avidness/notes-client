@@ -13,11 +13,14 @@ class ItemContainer extends React.Component {
       <div className="item-page">
         <ItemList 
           items={this.props.items} 
+          openCreation={this.props.openCreation} 
           createItem={this.props.onCreateItem}
-          startEditing={this.props.onStartEditing}
-          cancelEditing={this.props.onCancelEditing}
           updateItem={this.props.onUpdateItem}
           deleteItem = {this.props.onDeleteItem}
+          startEditing={this.props.onStartEditing}
+          cancelEditing={this.props.onCancelEditing}
+          startCreating={this.props.onStartCreating}
+          cancelCreating={this.props.onCancelCreating}
           />
       </div>
     );
@@ -25,16 +28,19 @@ class ItemContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.items
+  items: state.items.list,
+  openCreation: state.items.openCreation
 });
 
 const mapDispatchToProps = {
   onFetchItems: ItemActions.fetchItems,
   onCreateItem: ItemActions.createItem,
+  onUpdateItem: ItemActions.updateItem,
+  onDeleteItem: ItemActions.deleteItem,
   onStartEditing: ItemActions.startEditing,
   onCancelEditing: ItemActions.cancelEditing,
-  onUpdateItem: ItemActions.updateItem,
-  onDeleteItem: ItemActions.deleteItem
+  onStartCreating: ItemActions.startCreating,
+  onCancelCreating: ItemActions.cancelCreating
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer);
