@@ -10,7 +10,8 @@ class ItemForm extends React.Component {
     };
   }
   componentDidMount(){
-    this.setState({ item: this.props.item });
+    const edit_item = Object.assign({}, this.props.item);
+    this.setState({ item: edit_item });
   }
   onChange(e) {
     let edited_item = this.state.item;
