@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Container } from 'semantic-ui-react'
 
 import ItemList from '../components/items/ItemList';
 import ItemNew from '../components/items/ItemNew';
@@ -11,7 +12,7 @@ class ItemContainer extends React.Component {
   }
   render() {
     return (
-      <div className="item-page">
+      <Container>
         <ItemNew
           openCreation={this.props.openCreation} 
           createItem={this.props.onCreateItem}
@@ -25,7 +26,7 @@ class ItemContainer extends React.Component {
           startEditing={this.props.onStartEditing}
           cancelEditing={this.props.onCancelEditing}
           />
-      </div>
+      </Container>
     );
   }
 }

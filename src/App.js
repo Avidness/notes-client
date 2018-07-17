@@ -3,6 +3,7 @@ import React from 'react';
 import ItemContainer from './containers/ItemContainer'
 
 import img_gear from './images/gear.svg';
+import 'semantic-ui-forest-themes/semantic.darkly.min.css';
 import './App.css';
 
 class App extends React.Component {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Grid, Segment, Icon, Input } from 'semantic-ui-react';
 
 class ItemForm extends React.Component {
   constructor(props) {
@@ -18,23 +19,34 @@ class ItemForm extends React.Component {
   }
   render(){
     return (
-      <div>
-        <input
-          type="text"
-          name="label"
-          onChange={this.onChange}
-          defaultValue={this.props.item.label} />
-        <textarea
-          name="description"
-          onChange={this.onChange}
-          defaultValue={this.props.item.description} />
-        <button onClick={() => this.props.onSubmit(this.state.item)}>
-            save
-        </button>
-        <button onClick={this.props.cancel}>
-            cancel
-        </button>
-      </div>
+      <Segment>
+        <Grid columns={4} centered>
+          <Grid.Row verticalAlign='top'>
+            <Grid.Column>
+              <Input fluid name="label" 
+                placeholder='Label...'
+                onChange={this.onChange}
+                defaultValue={this.props.item.label}  />
+            </Grid.Column>
+            <Grid.Column>
+              <Input fluid name="description" 
+                placeholder='Description...'
+                onChange={this.onChange}
+                defaultValue={this.props.item.description}  />
+            </Grid.Column>
+            <Grid.Column>
+              <Button onClick={() => this.props.onSubmit(this.state.item)}>
+                <Icon name='save' /> Save
+              </Button>
+            </Grid.Column>
+            <Grid.Column>
+              <Button onClick={this.props.cancel}>
+                <Icon name='cancel' /> Cancel
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
     );
   }
 }
