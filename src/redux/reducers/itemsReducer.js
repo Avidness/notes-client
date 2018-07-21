@@ -2,7 +2,9 @@ import * as Actions from '../actions/itemActions';
 
 const initialState = {
   list: [],
-  openCreation: false
+  openCreation: false,
+  loading: true,
+  errorMessage: ''
 };
 
 export default function(state = initialState, action) {
@@ -10,7 +12,14 @@ export default function(state = initialState, action) {
     case Actions.FETCH_ITEMS:
       return {
         ...state,
-        list: action.payload
+        list: action.payload,
+        loading: false
+      };
+    case Actions.FETCH_FAIL:
+      return {
+        ...state,
+        errorMessage: 'Problem talking to the Server',
+        loading: false
       };
     case Actions.NEW_ITEM:
       return {
@@ -47,13 +56,11 @@ export default function(state = initialState, action) {
                 ?  {...item, editing: false}
                 : item)
       };
-    
     case Actions.START_CREATING:
       return {
         ...state,
         openCreation: true
       };
-      
     case Actions.CANCEL_CREATING:
       return {
         ...state,

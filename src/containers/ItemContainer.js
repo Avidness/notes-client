@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container } from 'semantic-ui-react'
+import { Container, Message } from 'semantic-ui-react';
 
+import Loading from '../components/Shared/Loading';
 import ItemList from '../components/items/ItemList';
 import ItemNew from '../components/items/ItemNew';
 import * as ItemActions from '../redux/actions/itemActions';
@@ -13,6 +14,14 @@ class ItemContainer extends React.Component {
   render() {
     return (
       <Container>
+        
+        {this.props.errorMessage !== '' 
+          ? <Message error header='An error has occured' content={this.props.errorMessage} /> 
+          : null}
+        {this.props.loading 
+          ? <Loading /> 
+          : null}
+
         <ItemNew
           openCreation={this.props.openCreation} 
           createItem={this.props.onCreateItem}
@@ -33,7 +42,9 @@ class ItemContainer extends React.Component {
 
 const mapStateToProps = state => ({
   items: state.items.list,
-  openCreation: state.items.openCreation
+  openCreation: state.items.openCreation,
+  loading: state.items.loading,
+  errorMessage: state.items.errorMessage
 });
 
 const mapDispatchToProps = {

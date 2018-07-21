@@ -1,4 +1,5 @@
 export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const FETCH_FAIL = 'FETCH_FAIL';
 export const NEW_ITEM = 'NEW_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
@@ -17,7 +18,12 @@ export const fetchItems = () => dispatch => {
       type: FETCH_ITEMS,
       payload: item_list
     })
-  );
+  ).catch(e => {
+    dispatch({
+      type: FETCH_FAIL,
+      payload: e
+    })
+  });
 };
 
 export const createItem = item_to_create => dispatch => {
