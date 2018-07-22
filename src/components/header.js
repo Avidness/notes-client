@@ -5,7 +5,7 @@ import '../static/styles/header.css';
 
 const Header = () => {
   return (
-    <header className="App-header">
+    <header id="header">
       <img src={img_gear} className="App-logo" alt="logo" />
       <h1 className="App-title">Notes</h1>
     </header>

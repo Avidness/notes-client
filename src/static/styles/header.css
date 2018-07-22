@@ -4,18 +4,15 @@
   float:left;
 }
 
-.App-header {
+#header{
   font-family: 'Press Start 2P';
-  background-color: #222;
-  height: 50px;
-  padding: 20px;
-  color: lightgray;
   background-image: url('../images/bg_circuits.svg');
-}
-
-.App-title {
-  font-size: 1.5em;
-  float:left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid gray; 
+  padding: 2em;
+  margin-bottom: 3em;
 }
 
 @keyframes App-logo-spin {
