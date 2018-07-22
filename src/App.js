@@ -4,7 +4,7 @@ import Header from './components/header';
 import ItemContainer from './containers/ItemContainer';
 
 import 'semantic-ui-forest-themes/semantic.darkly.min.css';
-import './App.css';
+import './static/styles/App.css';
 
 class App extends React.Component {
   render() {
