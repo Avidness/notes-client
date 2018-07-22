@@ -1,7 +1,7 @@
 import React from 'react';
-import { Dimmer, Loader } from 'semantic-ui-react';
 
-import img_gear from '../images/gear.svg';
+import img_gear from '../static/images/gear.svg';
+import '../static/styles/header.css';
 
 const Header = () => {
   return (
