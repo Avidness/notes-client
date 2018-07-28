@@ -1,28 +1,29 @@
 import React from 'react';
-import { Button, Grid, Segment, Icon } from 'semantic-ui-react'
+import { Button, Segment, Icon } from 'semantic-ui-react';
+import { Row, Col } from 'react-flexbox-grid';
 
 export const ItemRow = (props) => {
   let item = props.item;
   return (
-    <Segment>
-      <Grid columns={4} centered>
-          <Grid.Column>
-            {item.label}
-          </Grid.Column>
-          <Grid.Column>
-            {item.description}
-          </Grid.Column>
-          <Grid.Column>
-            <Button onClick={props.startEditing}>
-              <Icon name='edit' /> Edit
-            </Button>
-          </Grid.Column>
-          <Grid.Column>
-            <Button onClick={props.deleteItem}>
-              <Icon name='delete' /> Delete
-            </Button>
-          </Grid.Column>
-      </Grid>
+    <Segment vertical>
+      <Row>
+        <Col xs={12} sm={6} lg={3}>
+          {item.label}
+        </Col>
+        <Col xs={12} sm={6} lg={3}>
+          {item.description}
+        </Col>
+        <Col sm={6} lg={3}>
+          <Button onClick={props.startEditing}>
+            <Icon name='edit' /> Edit
+          </Button>
+        </Col>
+        <Col sm={6} lg={3}>
+          <Button onClick={props.deleteItem}>
+            <Icon name='delete' /> Delete
+          </Button>
+        </Col>
+      </Row>
     </Segment>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Grid, Segment, Icon, Input } from 'semantic-ui-react';
+import { Button, Segment, Icon, Input } from 'semantic-ui-react';
+import { Row, Col } from 'react-flexbox-grid';
 
 class ItemForm extends React.Component {
   constructor(props) {
@@ -20,33 +21,31 @@ class ItemForm extends React.Component {
   }
   render(){
     return (
-      <Segment>
-        <Grid columns={4} centered>
-          <Grid.Row verticalAlign='top'>
-            <Grid.Column>
-              <Input fluid name="label" 
-                placeholder='Label...'
-                onChange={this.onChange}
-                defaultValue={this.props.item.label}  />
-            </Grid.Column>
-            <Grid.Column>
-              <Input fluid name="description" 
-                placeholder='Description...'
-                onChange={this.onChange}
-                defaultValue={this.props.item.description}  />
-            </Grid.Column>
-            <Grid.Column>
-              <Button onClick={() => this.props.onSubmit(this.state.item)}>
-                <Icon name='save' /> Save
-              </Button>
-            </Grid.Column>
-            <Grid.Column>
-              <Button onClick={this.props.cancel}>
-                <Icon name='cancel' /> Cancel
-              </Button>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+      <Segment vertical>
+        <Row>
+          <Col xs={12} sm={6} lg={3}>
+            <Input fluid name="label" 
+              placeholder='Label...'
+              onChange={this.onChange}
+              defaultValue={this.props.item.label}  />
+          </Col>
+          <Col xs={12} sm={6} lg={3}>
+            <Input fluid name="description" 
+              placeholder='Description...'
+              onChange={this.onChange}
+              defaultValue={this.props.item.description}  />
+          </Col>
+          <Col sm={6} lg={3}>
+            <Button onClick={() => this.props.onSubmit(this.state.item)}>
+              <Icon name='save' /> Save
+            </Button>
+          </Col>
+          <Col sm={6} lg={3}>
+            <Button onClick={this.props.cancel}>
+              <Icon name='cancel' /> Cancel
+            </Button>
+          </Col>
+        </Row>
       </Segment>
     );
   }
