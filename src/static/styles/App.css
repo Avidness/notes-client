@@ -13,3 +13,8 @@ body {
 #content {
   text-align: center;
 }
+
+/* Override to minimalize the semantic darkly theme */
+.ui.tabular.menu .active.item{
+  background: #303030 !important;
+}
