@@ -7,9 +7,9 @@ body {
   background-color:#303030;
   margin: 0;
   padding: 0;
-  padding-top: 152px;
+  padding-top: 110px;
 }
 
-.App {
+#content {
   text-align: center;
 }

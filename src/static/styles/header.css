@@ -1,26 +1,20 @@
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+#logo {
   height: 58px;
-  float:left;
+  float: left;
 }
 
-#header{
-  font-family: 'Press Start 2P';
+#header {
   background-image: url('../images/bg_circuits.svg');
   background-color: #303030;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-bottom: 2px solid gray; 
-  padding: 2em;
-  margin-bottom: 3em;
+  padding: 1em;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#title {
+  margin:0;
+  line-height: 60px;
 }

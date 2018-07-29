@@ -9,10 +9,9 @@ import './static/styles/App.css';
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Header />
-
-        <main>
+        <main id='content'>
           <ItemContainer />
         </main>
       </div>
