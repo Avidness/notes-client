@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Container, Message } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 
 import Loading from '../components/Shared/Loading';
 import ItemList from '../components/items/ItemList';
@@ -13,7 +13,7 @@ class ItemContainer extends React.Component {
   }
   render() {
     return (
-      <Container>
+      <Fragment>
         
         {this.props.errorMessage !== '' 
           ? <Message error header='An error has occured' content={this.props.errorMessage} /> 
@@ -35,7 +35,7 @@ class ItemContainer extends React.Component {
           startEditing={this.props.onStartEditing}
           cancelEditing={this.props.onCancelEditing}
           />
-      </Container>
+      </Fragment>
     );
   }
 }
