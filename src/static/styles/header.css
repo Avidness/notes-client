@@ -6,7 +6,7 @@
 #header {
   background-image: url('../images/bg_circuits.svg');
   background-color: #303030;
-  border-bottom: 2px solid gray; 
+  border-bottom: 1px solid #464545; 
   padding: 1em;
   position: fixed;
   top: 0;
