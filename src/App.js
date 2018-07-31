@@ -2,6 +2,7 @@ import React from 'react';
 import { Tab } from 'semantic-ui-react';
 
 import Header from './components/header';
+import Footer from './components/footer';
 import ItemContainer from './containers/ItemContainer';
 
 import 'semantic-ui-forest-themes/semantic.darkly.min.css';
@@ -20,6 +21,7 @@ class App extends React.Component {
         <main id='content'>
           <Tab id='tab-container' panes={panes}/>
         </main>
+        <Footer />
       </div>
     );
   }
