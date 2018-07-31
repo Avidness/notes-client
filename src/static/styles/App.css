@@ -27,3 +27,7 @@ body {
 .ui.tabular.menu .active.item{
   background: #303030 !important;
 }
+
+#tab-container .tab{
+  padding: 1em 1em 0 0;
+}
