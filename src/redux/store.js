@@ -2,10 +2,12 @@ import thunk from 'redux-thunk';
 import { applyMiddleware, compose, 
   combineReducers, createStore } from 'redux';
 
-import itemsReducer from './reducers/itemsReducer';
+  import itemsReducer from './reducers/itemsReducer';
+  import categoryReducer from './reducers/categoryReducer';
 
 const allReducers = combineReducers({
-  items: itemsReducer
+  items: itemsReducer,
+  categories: categoryReducer
 })
 
 const allStoreEnhancers = compose(
