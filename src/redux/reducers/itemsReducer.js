@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
         list: action.payload,
         loading: false
       };
-    case Actions.FETCH_FAIL:
+    case Actions.FETCH_FAIL_ITEM:
       return {
         ...state,
         errorMessage: 'Problem talking to the Server',

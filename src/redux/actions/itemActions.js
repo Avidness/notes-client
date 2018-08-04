@@ -1,5 +1,5 @@
 export const FETCH_ITEMS = 'FETCH_ITEMS';
-export const FETCH_FAIL = 'FETCH_FAIL';
+export const FETCH_FAIL_ITEM = 'FETCH_FAIL_ITEM';
 export const NEW_ITEM = 'NEW_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
@@ -20,7 +20,7 @@ export const fetchItems = () => dispatch => {
     })
   ).catch(e => {
     dispatch({
-      type: FETCH_FAIL,
+      type: FETCH_FAIL_ITEM,
       payload: e
     })
   });
