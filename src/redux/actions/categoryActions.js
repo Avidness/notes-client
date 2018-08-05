@@ -3,6 +3,7 @@ export const FETCH_FAIL_CATEGORY = 'FETCH_FAIL_CATEGORY';
 export const NEW_CATEGORY = 'NEW_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
+export const UPDATE_CUR_CATEGORY = 'UPDATE_CUR_CATEGORY';
 
 export const fetchCategories = () => dispatch => {
   fetch('http://localhost:5000/api/category', {
@@ -68,4 +69,11 @@ export const deleteCategory = category_to_delete => dispatch => {
   }).catch((err) => {
       alert("There was a problem deleting the category.")
   });
+};
+
+export const updateCurCategory = newCategoryId => dispatch => {
+  dispatch({
+    type: UPDATE_CUR_CATEGORY,
+    payload: newCategoryId
+  })
 };

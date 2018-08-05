@@ -3,7 +3,8 @@ import * as Actions from '../actions/categoryActions';
 const initialState = {
   list: [],
   loading: true,
-  errorMessage: ''
+  errorMessage: '',
+  curCategoryId: 1
 };
 
 export default function(state = initialState, action) {
@@ -38,6 +39,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         list: state.list.filter(({ id }) => id !== action.payload)
+      };
+    case Actions.UPDATE_CUR_CATEGORY:
+      return {
+        ...state,
+        curCategoryId: action.payload
       };
     default:
       return state;
