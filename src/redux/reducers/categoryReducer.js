@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
         openCreation: false,
         list: [...state.list, action.payload]
       };
-    case Actions.NEW_CATEGORY:
+    case Actions.UPDATE_CATEGORY:
       return {
         ...state,
         list: state.list.map((item) => 
