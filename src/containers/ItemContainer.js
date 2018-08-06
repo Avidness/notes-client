@@ -8,8 +8,13 @@ import ItemNew from '../components/items/ItemNew';
 import * as ItemActions from '../redux/actions/itemActions';
 
 class ItemContainer extends React.Component {
-  componentDidMount(){
-    this.props.onFetchItems();
+  componentWillMount(){
+    this.props.onFetchItems(this.props.curCategoryId);
+  }
+  componentWillUpdate(nextProps){
+    if(this.props.curCategoryId != nextProps.curCategoryId){
+      this.props.onFetchItems(nextProps.curCategoryId);
+    }
   }
   render() {
     return (
@@ -19,7 +24,7 @@ class ItemContainer extends React.Component {
           ? <Message error header='An error has occured' content={this.props.errorMessage} /> 
           : null}
         {this.props.loading 
-          ? <Loading /> 
+          ? <Loading />
           : null}
 
         <ItemNew
@@ -44,7 +49,8 @@ const mapStateToProps = state => ({
   items: state.items.list,
   openCreation: state.items.openCreation,
   loading: state.items.loading,
-  errorMessage: state.items.errorMessage
+  errorMessage: state.items.errorMessage,
+  curCategoryId: state.categories.curCategoryId
 });
 
 const mapDispatchToProps = {
