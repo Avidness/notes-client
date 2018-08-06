@@ -12,7 +12,7 @@ class ItemContainer extends React.Component {
     this.props.onFetchItems(this.props.curCategoryId);
   }
   componentWillUpdate(nextProps){
-    if(this.props.curCategoryId != nextProps.curCategoryId){
+    if(this.props.curCategoryId !== nextProps.curCategoryId){
       this.props.onFetchItems(nextProps.curCategoryId);
     }
   }
