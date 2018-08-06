@@ -7,29 +7,19 @@ body {
   background-color:#303030;
   margin: 0;
   padding: 0;
-  padding-top: 150px;
+  padding-top: 180px;
 }
 
 #content {
   text-align: center;
 }
 
-#tab-container .ui.attached.tabular.menu{
+#tab-container{
   width:100%;
   position: fixed;
-  height: 58px;
   top: 91px;
   z-index: 1;
   background: #303030;
-}
-
-/* Override to minimalize the semantic darkly theme */
-.ui.tabular.menu .active.item{
-  background: #303030 !important;
-}
-
-#tab-container .tab{
-  padding: 1em 1em 0 0;
 }
 
 .footer {
