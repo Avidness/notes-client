@@ -8,8 +8,8 @@ export const START_EDITING = 'START_EDITING';
 export const CANCEL_CREATING = 'CANCEL_CREATING';
 export const START_CREATING = 'START_CREATING';
 
-export const fetchItems = () => dispatch => {
-  fetch('http://localhost:5000/api/item', {
+export const fetchItems = (category_id) => dispatch => {
+  fetch('http://localhost:5000/api/item/category/' + category_id, {
     method: 'GET',
   })
   .then(res => res.json())
