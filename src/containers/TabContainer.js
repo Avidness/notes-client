@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AppBar, Tabs, Tab }  from '@material-ui/core';
+import { Tabs, Tab }  from '@material-ui/core';
 import FaIcon from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,22 +19,19 @@ class TabContainer extends React.Component {
       return null;
     }
     return (
-      <div>
-        <AppBar id='tab-container'>
-          <Tabs 
-            onChange={this.handleChange} 
-            value={category_id} 
-            scrollable>
+      <Tabs 
+        id='tab-container'
+        onChange={this.handleChange} 
+        value={category_id} 
+        scrollable>
 
-            {this.props.categories.map((x, i) => (
-              <Tab 
-                key={x.id}
-                value={x.id}
-                label={x.label}
-                icon={<FaIcon icon={faCoffee} size="2x" />} />))}
-          </Tabs>
-        </AppBar>
-      </div>
+        {this.props.categories.map((x, i) => (
+          <Tab 
+            key={x.id}
+            value={x.id}
+            label={x.label}
+            icon={<FaIcon icon={faCoffee} size="2x" />} />))}
+      </Tabs>
     );
   };
 }

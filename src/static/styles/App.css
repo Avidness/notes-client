@@ -7,7 +7,7 @@ body {
   background-color:#303030;
   margin: 0;
   padding: 0;
-  padding-top: 180px;
+  padding-top: 100px;
 }
 
 #content {
@@ -16,10 +16,6 @@ body {
 
 #tab-container{
   width:100%;
-  position: fixed;
-  top: 91px;
-  z-index: 1;
-  background: #303030;
 }
 
 .footer {

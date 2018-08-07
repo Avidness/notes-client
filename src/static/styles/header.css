@@ -1,17 +1,6 @@
-#logo {
-  height: 58px;
-  float: left;
-}
-
 #header {
-  background-image: url('../images/bg_circuits.svg');
   background-color: #303030;
-  border-bottom: 1px solid #464545; 
-  padding: 1em;
   position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
 }
 
 #title {
