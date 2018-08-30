@@ -1,7 +1,8 @@
-import * as Actions from '../actions/itemActions';
+import * as Actions from '../actions/ItemActions';
 
 const initialState = {
   list: [],
+  item: null,
   openCreation: false,
   loading: true,
   errorMessage: ''
@@ -9,6 +10,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case Actions.FETCH_ITEM:
+      return {
+        ...state,
+        item: action.payload,
+        loading: false
+      };
     case Actions.FETCH_ITEMS:
       return {
         ...state,

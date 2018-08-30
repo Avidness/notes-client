@@ -1,4 +1,4 @@
-import * as Actions from '../actions/categoryActions';
+import * as Actions from '../actions/CategoryActions';
 
 const initialState = {
   list: [],

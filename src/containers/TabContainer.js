@@ -4,7 +4,7 @@ import { Tabs, Tab }  from '@material-ui/core';
 import FaIcon from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
-import * as CategoryActions from '../redux/actions/categoryActions';
+import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class TabContainer extends React.Component {
   componentDidMount(){
