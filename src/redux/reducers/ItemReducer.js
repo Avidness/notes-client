@@ -16,13 +16,7 @@ export default function(state = initialState, action) {
         item: action.payload,
         loading: false
       };
-    case Actions.FETCH_ITEMS:
-      return {
-        ...state,
-        list: action.payload,
-        loading: false
-      };
-    case Actions.FETCH_FAIL_ITEM:
+    case Actions.FETCH_ITEM_FAIL:
       return {
         ...state,
         errorMessage: 'Problem talking to the Server',

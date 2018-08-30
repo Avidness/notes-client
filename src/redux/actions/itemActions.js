@@ -1,5 +1,5 @@
-export const FETCH_ITEMS = 'FETCH_ITEMS';
-export const FETCH_FAIL_ITEM = 'FETCH_FAIL_ITEM';
+export const FETCH_ITEM = 'FETCH_ITEM';
+export const FETCH_ITEM_FAIL = 'FETCH_ITEM_FAIL';
 export const NEW_ITEM = 'NEW_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
@@ -8,22 +8,17 @@ export const START_EDITING = 'START_EDITING';
 export const CANCEL_CREATING = 'CANCEL_CREATING';
 export const START_CREATING = 'START_CREATING';
 
-export const fetchItems = (category_id) => dispatch => {
-  fetch('http://localhost:5000/api/item/category/' + category_id, {
+export const fetchItem = (item_id) => dispatch => {
+  fetch('http://localhost:5000/api/item/' + item_id, {
     method: 'GET',
   })
   .then(res => res.json())
-  .then(item_list =>
+  .then(item =>
     dispatch({
-      type: FETCH_ITEMS,
-      payload: item_list
+      type: FETCH_ITEM,
+      payload: item.result
     })
-  ).catch(e => {
-    dispatch({
-      type: FETCH_FAIL_ITEM,
-      payload: e
-    })
-  });
+  );
 };
 
 export const createItem = item_to_create => dispatch => {

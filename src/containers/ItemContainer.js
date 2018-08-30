@@ -3,18 +3,13 @@ import { connect } from 'react-redux';
 import { Message } from 'semantic-ui-react';
 
 import Loading from '../components/Shared/Loading';
-import ItemList from '../components/items/ItemList';
-import ItemNew from '../components/items/ItemNew';
-import * as ItemActions from '../redux/actions/itemActions';
+import ItemForm from '../components/items/ItemForm';
+import * as ItemActions from '../redux/actions/ItemActions';
 
 class ItemContainer extends React.Component {
   componentWillMount(){
-    this.props.onFetchItems(this.props.curCategoryId);
-  }
-  componentWillUpdate(nextProps){
-    if(this.props.curCategoryId !== nextProps.curCategoryId){
-      this.props.onFetchItems(nextProps.curCategoryId);
-    }
+    var itemid = this.props.match.params.itemid;
+    this.props.onFetchItem(itemid);
   }
   render() {
     return (
@@ -27,41 +22,25 @@ class ItemContainer extends React.Component {
           ? <Loading />
           : null}
 
-        <ItemNew
-          openCreation={this.props.openCreation} 
-          createItem={this.props.onCreateItem}
-          startCreating={this.props.onStartCreating}
-          cancelCreating={this.props.onCancelCreating}
-          />
-        <ItemList 
-          items={this.props.items} 
-          updateItem={this.props.onUpdateItem}
-          deleteItem = {this.props.onDeleteItem}
-          startEditing={this.props.onStartEditing}
-          cancelEditing={this.props.onCancelEditing}
-          />
+        <ItemForm
+          item={this.props.item} 
+          categories={this.props.categories} 
+          cancel={() => this.props.cancelEditing(this.props.item.id)}
+          onSubmit={this.props.updateItem} />
       </Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  items: state.items.list,
-  openCreation: state.items.openCreation,
+  item: state.items.item,
   loading: state.items.loading,
   errorMessage: state.items.errorMessage,
-  curCategoryId: state.categories.curCategoryId
+  categories: state.categories.list
 });
 
 const mapDispatchToProps = {
-  onFetchItems: ItemActions.fetchItems,
-  onCreateItem: ItemActions.createItem,
-  onUpdateItem: ItemActions.updateItem,
-  onDeleteItem: ItemActions.deleteItem,
-  onStartEditing: ItemActions.startEditing,
-  onCancelEditing: ItemActions.cancelEditing,
-  onStartCreating: ItemActions.startCreating,
-  onCancelCreating: ItemActions.cancelCreating
+  onFetchItem: ItemActions.fetchItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer);
