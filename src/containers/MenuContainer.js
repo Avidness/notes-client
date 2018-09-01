@@ -6,7 +6,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
-class TabContainer extends React.Component {
+class MenuContainer extends React.Component {
   componentDidMount(){
     this.props.onFetchCategories();
   }
@@ -46,4 +46,4 @@ const mapDispatchToProps = {
   onUpdateCurCategory: CategoryActions.updateCurCategory
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TabContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer);

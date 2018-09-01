@@ -3,7 +3,7 @@ import { AppBar, Toolbar, IconButton, Typography }  from '@material-ui/core';
 import FaIcon from '@fortawesome/react-fontawesome';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
-import TabContainer from '../containers/TabContainer';
+import MenuContainer from '../containers/MenuContainer';
 
 import '../static/styles/header.css';
 
@@ -18,7 +18,7 @@ const Header = () => {
           Notes
         </Typography>
 
-        <TabContainer />
+        <MenuContainer />
 
       </Toolbar>
     </AppBar>
