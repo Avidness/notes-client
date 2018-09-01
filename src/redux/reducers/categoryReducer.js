@@ -3,7 +3,7 @@ import * as Actions from '../actions/CategoryActions';
 const initialState = {
   list: [],
   loading: true,
-  errorMessage: '',
+  errorMessage: null,
   curCategoryId: 1
 };
 

@@ -3,7 +3,7 @@ import * as Actions from '../actions/ItemListActions';
 const initialState = {
   list: [],
   loading: true,
-  errorMessage: ''
+  errorMessage: null
 };
 
 export default function(state = initialState, action) {
