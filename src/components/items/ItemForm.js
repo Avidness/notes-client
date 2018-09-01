@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Segment, Icon, Input } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Select, MenuItem, Input, Button } from '@material-ui/core';
+import { Segment, Icon } from 'semantic-ui-react';
 import { Row, Col } from 'react-flexbox-grid';
 
 class ItemForm extends React.Component {
@@ -24,24 +26,24 @@ class ItemForm extends React.Component {
       <Segment vertical>
         <Row>
           <Col xs={12} sm={6} lg={3}>
-            <Input fluid name="label" 
+            <Input name="label" 
               placeholder='Label...'
               onChange={this.onChange}
               defaultValue={this.props.item.label}  />
           </Col>
           <Col xs={12} sm={6} lg={3}>
-            <Input fluid name="description" 
+            <Input name="description" 
               placeholder='Description...'
               onChange={this.onChange}
               defaultValue={this.props.item.description}  />
           </Col>
           <Col sm={6} lg={3}>
-            <Button onClick={() => this.props.onSubmit(this.state.item)}>
+            <Button variant="contained" onClick={() => this.props.onSubmit(this.state.item)}>
               <Icon name='save' /> Save
             </Button>
           </Col>
           <Col sm={6} lg={3}>
-            <Button onClick={this.props.cancel}>
+          <Button onClick={this.props.cancel}>
               <Icon name='cancel' /> Cancel
             </Button>
           </Col>
