@@ -61,9 +61,11 @@ class ItemForm extends React.Component {
             </Button>
           </Col>
           <Col sm={6} lg={3}>
-            <Button onClick={this.props.cancel}>
-              <Icon name='cancel' /> Cancel
-            </Button>
+            <Link to={'/items/'}>
+              <Button variant="contained" onClick={this.props.cancel}>
+                <Icon name='cancel' /> Cancel
+              </Button>
+            </Link>
           </Col>
         </Row>
       </Segment>
