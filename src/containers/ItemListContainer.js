@@ -16,16 +16,14 @@ class ItemListContainer extends React.Component {
     }
   }
   render() {
+    if(this.props.errorMessage){
+      return <Message error header='An error has occured' content={this.props.errorMessage} />
+    }
+    if(this.props.loading){
+      return <Loading />
+    }
     return (
       <Fragment>
-        
-        {this.props.errorMessage !== '' 
-          ? <Message error header='An error has occured' content={this.props.errorMessage} /> 
-          : null}
-        {this.props.loading 
-          ? <Loading />
-          : null}
-
         <ItemList items={this.props.items} />
       </Fragment>
     );
