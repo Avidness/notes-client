@@ -28,6 +28,9 @@ class ItemForm extends React.Component {
     this.setState({ item: edited_item});
   }
   render(){
+    if(this.props.item === null){
+      return <span>loading</span>
+    }
     return (
       <Segment vertical>
         <Row>
