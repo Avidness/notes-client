@@ -19,7 +19,6 @@ class App extends React.Component {
             <Fragment>
               <Route path='/items' component={ItemListContainer} />
               <Route path='/item/:itemid' component={ItemContainer} />
-              <Redirect from="/" to="items" />
             </Fragment>
           </BrowserRouter>
         </main>
