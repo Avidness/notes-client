@@ -25,8 +25,7 @@ class ItemContainer extends React.Component {
         <ItemForm
           item={this.props.item} 
           categories={this.props.categories} 
-          cancel={() => this.props.cancelEditing(this.props.item.id)}
-          onSubmit={this.props.updateItem} />
+          onSubmit={this.props.onUpdateItem} />
       </Fragment>
     );
   }

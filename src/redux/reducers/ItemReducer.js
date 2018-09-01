@@ -41,32 +41,6 @@ export default function(state = initialState, action) {
         ...state,
         list: state.list.filter(({ id }) => id !== action.payload)
       };
-      case Actions.START_EDITING:
-        return {
-          ...state,
-          list: state.list.map((item) => 
-                  item.id === action.payload
-                  ?  {...item, editing: true}
-                  : item)
-        };
-      case Actions.CANCEL_EDITING:
-        return {
-          ...state,
-          list: state.list.map((item) => 
-                  item.id === action.payload
-                  ?  {...item, editing: false}
-                  : item)
-        };
-      case Actions.START_CREATING:
-        return {
-          ...state,
-          openCreation: true
-        };
-      case Actions.CANCEL_CREATING:
-        return {
-          ...state,
-          openCreation: false
-        };
     default:
       return state;
   }
