@@ -37,7 +37,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onFetchItem: ItemActions.fetchItem
+  onFetchItem: ItemActions.fetchItem,
+  onUpdateItem: ItemActions.updateItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer);
