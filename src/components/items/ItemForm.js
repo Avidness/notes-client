@@ -40,18 +40,18 @@ class ItemForm extends React.Component {
             <Input name="label" 
               placeholder='Label...'
               onChange={this.onChange}
-              defaultValue={this.props.item.label}  />
+              defaultValue={this.state.item.label}  />
           </Col>
           <Col xs={12} sm={6} lg={3}>
             <Input name="description" 
               placeholder='Description...'
               onChange={this.onChange}
-              defaultValue={this.props.item.description}  />
+              defaultValue={this.state.item.description}  />
           </Col>
           <Col xs={12} sm={6} lg={3}>
             <Select 
               onChange={this.onCategoryChange}
-              value={this.props.item.category.id}>
+              value={this.state.item.category.id}>
               {this.props.categories.map(function (cat, i) {
                 return <MenuItem key={i} value={cat.id}>{cat.label}</MenuItem>})
               }
