@@ -22,6 +22,7 @@ class ItemContainer extends React.Component {
       <Fragment>
         <ItemForm
           item={this.props.item} 
+          loading={this.props.loading}
           categories={this.props.categories} 
           onSubmit={this.props.onUpdateItem} />
       </Fragment>

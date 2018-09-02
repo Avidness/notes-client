@@ -3,8 +3,11 @@ export const FETCH_ITEM_FAIL = 'FETCH_ITEM_FAIL';
 export const NEW_ITEM = 'NEW_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
+export const SET_LOADING_ITEM = 'SET_LOADING_ITEM';
 
 export const fetchItem = (item_id) => dispatch => {
+  dispatch({ type: SET_LOADING_ITEM });
+
   fetch('http://localhost:5000/api/item/' + item_id, {
     method: 'GET',
   })

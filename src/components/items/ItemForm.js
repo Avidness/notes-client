@@ -4,6 +4,8 @@ import { Select, MenuItem, Input, Button } from '@material-ui/core';
 import { Segment, Icon } from 'semantic-ui-react';
 import { Row, Col } from 'react-flexbox-grid';
 
+import Loading from '../Shared/Loading';
+
 class ItemForm extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,7 @@ class ItemForm extends React.Component {
       item: {}
     };
   }
-  componentDidMount(){
+  componentWillMount(){
     const edit_item = Object.assign({}, this.props.item);
     this.setState({ item: edit_item });
   }
@@ -28,8 +30,8 @@ class ItemForm extends React.Component {
     this.setState({ item: edited_item});
   }
   render(){
-    if(this.props.item === null){
-      return <span>loading</span>
+    if(this.props.loading){
+      return <Loading />
     }
     return (
       <Segment vertical>

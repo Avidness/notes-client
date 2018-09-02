@@ -41,6 +41,11 @@ export default function(state = initialState, action) {
         ...state,
         list: state.list.filter(({ id }) => id !== action.payload)
       };
+    case Actions.SET_LOADING_ITEM:
+      return {
+        ...state,
+        loading: true
+      };
     default:
       return state;
   }
