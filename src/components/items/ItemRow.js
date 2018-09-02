@@ -15,7 +15,7 @@ export const ItemRow = (props) => {
         <Col xs={12} sm={4}>
           {item.description}
         </Col>
-        <Col sm={12} sm={4}>
+        <Col xs={12} sm={4}>
           <Link to={'/item/' + props.item.id}>
             <Button>
               <Icon name='edit' /> Edit
