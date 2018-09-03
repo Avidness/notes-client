@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Select, MenuItem, Input, Button } from '@material-ui/core';
+import { Select, MenuItem, Input, IconButton } from '@material-ui/core';
+import { Save, Cancel } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
 
 import Loading from '../Shared/Loading';
@@ -57,15 +58,18 @@ class ItemForm extends React.Component {
             </Select>
           </Col>
           <Col sm={6} lg={3}>
-            <Button variant="contained" onClick={() => this.props.onSubmit(this.state.item)}>
-              Save
-            </Button>
+            <IconButton 
+              color="inherit" 
+              aria-label="Save" 
+              onClick={() => this.props.onSubmit(this.state.item)}>
+              <Save />
+            </IconButton>
           </Col>
           <Col sm={6} lg={3}>
             <Link to={'/items/'}>
-              <Button variant="contained">
-                Cancel
-              </Button>
+              <IconButton color="inherit" aria-label="Cancel">
+                <Cancel />
+              </IconButton>
             </Link>
           </Col>
         </Row>

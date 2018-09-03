@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import { Edit } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
 
 export const ItemRow = (props) => {
@@ -17,7 +18,9 @@ export const ItemRow = (props) => {
         </Col>
         <Col xs={12} sm={4}>
           <Link to={'/item/' + props.item.id}>
-            <Button>Edit</Button>
+            <IconButton color='inherit' aria-label='Edit'>
+              <Edit />
+            </IconButton>
           </Link>
         </Col>
       </Row>
