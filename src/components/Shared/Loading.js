@@ -1,11 +1,9 @@
 import React from 'react';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { LinearProgress } from '@material-ui/core';
 
 const Loading = () => {
   return (
-    <Dimmer active>
-      <Loader content='Loading' />
-    </Dimmer>
+    <LinearProgress />
   )
 }
 

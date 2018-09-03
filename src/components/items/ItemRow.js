@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Segment, Icon } from 'semantic-ui-react';
+import { Button } from '@material-ui/core';
 import { Row, Col } from 'react-flexbox-grid';
 
 export const ItemRow = (props) => {
   let item = props.item;
   
   return (
-    <Segment vertical>
+    <Fragment>
       <Row>
         <Col xs={12} sm={4}>
           {item.label}
@@ -17,13 +17,11 @@ export const ItemRow = (props) => {
         </Col>
         <Col xs={12} sm={4}>
           <Link to={'/item/' + props.item.id}>
-            <Button>
-              <Icon name='edit' /> Edit
-            </Button>
+            <Button>Edit</Button>
           </Link>
         </Col>
       </Row>
-    </Segment>
+    </Fragment>
   );
 }
 

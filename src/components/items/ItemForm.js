@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Select, MenuItem, Input, Button } from '@material-ui/core';
-import { Segment, Icon } from 'semantic-ui-react';
 import { Row, Col } from 'react-flexbox-grid';
 
 import Loading from '../Shared/Loading';
@@ -34,7 +33,7 @@ class ItemForm extends React.Component {
       return <Loading />
     }
     return (
-      <Segment vertical>
+      <Fragment>
         <Row>
           <Col xs={12} sm={6} lg={3}>
             <Input name="label" 
@@ -59,18 +58,18 @@ class ItemForm extends React.Component {
           </Col>
           <Col sm={6} lg={3}>
             <Button variant="contained" onClick={() => this.props.onSubmit(this.state.item)}>
-              <Icon name='save' /> Save
+              Save
             </Button>
           </Col>
           <Col sm={6} lg={3}>
             <Link to={'/items/'}>
               <Button variant="contained">
-                <Icon name='cancel' /> Cancel
+                Cancel
               </Button>
             </Link>
           </Col>
         </Row>
-      </Segment>
+      </Fragment>
     );
   }
 }

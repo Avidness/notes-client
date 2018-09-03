@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Message } from 'semantic-ui-react';
+import { Typography } from '@material-ui/core';
 
 import Loading from '../components/Shared/Loading';
 import ItemList from '../components/items/ItemList';
@@ -17,7 +17,7 @@ class ItemListContainer extends React.Component {
   }
   render() {
     if(this.props.errorMessage){
-      return <Message error header='An error has occured' content={this.props.errorMessage} />
+      return <Typography color='error'>{this.props.errorMessage}</Typography>
     }
     if(this.props.loading){
       return <Loading />

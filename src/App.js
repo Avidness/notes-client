@@ -6,7 +6,6 @@ import Footer from './components/footer';
 import ItemContainer from './containers/ItemContainer';
 import ItemListContainer from './containers/ItemListContainer';
 
-import 'semantic-ui-forest-themes/semantic.darkly.min.css';
 import './static/styles/App.css';
 
 class App extends React.Component {

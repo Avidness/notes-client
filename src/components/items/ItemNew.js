@@ -1,20 +1,21 @@
-import React from 'react';
-import { Button, Icon } from 'semantic-ui-react'
+import React, { Fragment } from 'react';
+import { Button } from '@material-ui/core';
 
 import ItemForm from './ItemForm';
 
 const ItemNew = (props) => {
   return (
-    <div>
+    <Fragment>
       {props.openCreation
       ? <ItemForm 
-        item={{label: '', description: ''}} 
-        cancel={props.cancelCreating}
-        onSubmit={props.createItem} />
+          item={{label: '', description: '', category: 1}} 
+          categories={props.categories} 
+          cancel={props.cancelCreating}
+          onSubmit={props.createItem} />
       : <Button onClick={props.startCreating}>
-          <Icon name='edit' /> New Item
+          New Item
         </Button>}
-    </div>
+    </Fragment>
   )
 }
 
