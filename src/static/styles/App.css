@@ -18,6 +18,10 @@ body {
   width:100%;
 }
 
+.item-row {
+  margin: 0;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

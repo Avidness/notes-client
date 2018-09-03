@@ -8,23 +8,21 @@ export const ItemRow = (props) => {
   let item = props.item;
   
   return (
-    <Fragment>
-      <Row>
-        <Col xs={12} sm={4}>
-          {item.label}
-        </Col>
-        <Col xs={12} sm={4}>
-          {item.description}
-        </Col>
-        <Col xs={12} sm={4}>
-          <Link to={'/item/' + props.item.id}>
-            <IconButton color='inherit' aria-label='Edit'>
-              <Edit />
-            </IconButton>
-          </Link>
-        </Col>
-      </Row>
-    </Fragment>
+    <Row className="item-row">
+      <Col xs={12} sm={4}>
+        {item.label}
+      </Col>
+      <Col xs={12} sm={4}>
+        {item.description}
+      </Col>
+      <Col xs={12} sm={4}>
+        <Link to={'/item/' + props.item.id}>
+          <IconButton color='inherit' aria-label='Edit'>
+            <Edit />
+          </IconButton>
+        </Link>
+      </Col>
+    </Row>
   );
 }
 
