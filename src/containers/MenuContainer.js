@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Tabs, Tab }  from '@material-ui/core';
-import FaIcon from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { Folder } from '@material-ui/icons';
 
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
@@ -30,7 +29,7 @@ class MenuContainer extends React.Component {
             key={x.id}
             value={x.id}
             label={x.label}
-            icon={<FaIcon icon={faCoffee} size="2x" />} />))}
+            icon={<Folder />} />))}
       </Tabs>
     );
   };
