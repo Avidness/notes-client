@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Header from './components/header';
-import Footer from './components/footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import ItemContainer from './containers/ItemContainer';
 import ItemListContainer from './containers/ItemListContainer';
 
