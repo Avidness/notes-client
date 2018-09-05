@@ -4,8 +4,6 @@ import { Select, MenuItem, Input, IconButton } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
 
-import Loading from './Loading';
-
 class ItemForm extends React.Component {
   constructor(props) {
     super(props);
@@ -30,9 +28,6 @@ class ItemForm extends React.Component {
     this.setState({ item: edited_item});
   }
   render(){
-    if(this.props.loading){
-      return <Loading />
-    }
     return (
       <Fragment>
         <Row>
