@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
-import Loading from '../components/Shared/Loading';
-import ItemForm from '../components/items/ItemForm';
+import Loading from '../components/Loading'
+import ItemForm from '../components/ItemForm';
 import * as ItemActions from '../redux/actions/ItemActions';
 
 class ItemContainer extends React.Component {

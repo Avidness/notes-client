@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
-
-import ItemRow from './ItemRow';
+import React, { Fragment } from 'react'
+import ItemRow from './ItemRow'
 
 const ItemList = (props) => {
   return (
@@ -12,4 +11,4 @@ const ItemList = (props) => {
   )
 }
 
-export default ItemList;
+export default ItemList

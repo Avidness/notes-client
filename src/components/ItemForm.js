@@ -4,7 +4,7 @@ import { Select, MenuItem, Input, IconButton } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
 
-import Loading from '../Shared/Loading';
+import Loading from './Loading';
 
 class ItemForm extends React.Component {
   constructor(props) {
