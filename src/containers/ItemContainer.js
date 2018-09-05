@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
-import Loading from '../components/Loading'
+import Loading from '../components/Loading';
 import ItemForm from '../components/ItemForm';
 import * as ItemActions from '../redux/actions/ItemActions';
 
@@ -19,13 +19,11 @@ class ItemContainer extends React.Component {
       return <Loading />
     }
     return (
-      <Fragment>
-        <ItemForm
-          item={this.props.item} 
-          loading={this.props.loading}
-          categories={this.props.categories} 
-          onSubmit={this.props.onUpdateItem} />
-      </Fragment>
+      <ItemForm
+        item={this.props.item} 
+        loading={this.props.loading}
+        categories={this.props.categories} 
+        onSubmit={this.props.onUpdateItem} />
     );
   }
 }
