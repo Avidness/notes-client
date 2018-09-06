@@ -4,12 +4,14 @@ import { applyMiddleware, compose,
 
   import ItemReducer from './reducers/ItemReducer';
   import ItemListReducer from './reducers/ItemListReducer';
+  import CategoryListReducer from './reducers/CategoryListReducer';
   import CategoryReducer from './reducers/CategoryReducer';
 
 const allReducers = combineReducers({
   itemList: ItemListReducer,
   items: ItemReducer,
-  categories: CategoryReducer
+  categories: CategoryListReducer,
+  category: CategoryReducer
 })
 
 const allStoreEnhancers = compose(

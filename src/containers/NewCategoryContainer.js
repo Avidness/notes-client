@@ -8,12 +8,6 @@ import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class NewCategoryContainer extends React.Component {
   render() {
-    if(this.props.errorMessage){
-      return <Typography color='error'>{this.props.errorMessage}</Typography>
-    }
-    if(this.props.loading){
-      return <Loading />
-    }
     return (
       <CategoryForm
         category={this.props.category} 
@@ -24,8 +18,8 @@ class NewCategoryContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.categories.loading,
-  errorMessage: state.categories.errorMessage
+  loading: state.category.loading,
+  errorMessage: state.category.errorMessage
 });
 
 const mapDispatchToProps = {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Tabs, Tab }  from '@material-ui/core';
 import { Folder } from '@material-ui/icons';
 
-import * as CategoryActions from '../redux/actions/CategoryActions';
+import * as CategoryListActions from '../redux/actions/CategoryListActions';
 
 class MenuContainer extends React.Component {
   componentDidMount(){
@@ -41,8 +41,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onFetchCategories: CategoryActions.fetchCategories,
-  onUpdateCurCategory: CategoryActions.updateCurCategory
+  onFetchCategories: CategoryListActions.fetchCategories,
+  onUpdateCurCategory: CategoryListActions.updateCurCategory
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer);
