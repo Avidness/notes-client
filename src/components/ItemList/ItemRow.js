@@ -9,11 +9,11 @@ export const ItemRow = (props) => {
   
   return (
     <Row className="item-row">
-      <Col xs={12} sm={4}>
+      <Col xs={6} sm={4}>
         {item.label}
       </Col>
 
-      <Col xs={12} sm={4}>
+      <Col xs={6} sm={4}>
         {item.description}
       </Col>
 
