@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Icon, IconButton, Typography }  from '@material-ui/core';
 import { Assignment, CreateNewFolder, LibraryAdd  } from '@material-ui/icons';
 
@@ -21,9 +22,11 @@ const Header = () => {
         <IconButton color="inherit" aria-label="New Category">
           <CreateNewFolder />
         </IconButton>
-        <IconButton color="inherit" aria-label="New Item">
-          <LibraryAdd />
-        </IconButton>
+        <Link to={'/newitem'}>
+          <IconButton color="inherit" aria-label="New Item">
+            <LibraryAdd />
+          </IconButton>
+        </Link>
       </Toolbar>
     </AppBar>
   )
