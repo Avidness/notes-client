@@ -19,9 +19,11 @@ const Header = () => {
 
         <MenuContainer />
 
-        <IconButton color="inherit" aria-label="New Category">
-          <CreateNewFolder />
-        </IconButton>
+        <Link to={'/newcategory'}>
+          <IconButton color="inherit" aria-label="New Category">
+            <CreateNewFolder />
+          </IconButton>
+        </Link>
 
         <Link to={'/newitem'}>
           <IconButton color="inherit" aria-label="New Item">
