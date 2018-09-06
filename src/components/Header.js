@@ -22,6 +22,7 @@ const Header = () => {
         <IconButton color="inherit" aria-label="New Category">
           <CreateNewFolder />
         </IconButton>
+
         <Link to={'/newitem'}>
           <IconButton color="inherit" aria-label="New Item">
             <LibraryAdd />
