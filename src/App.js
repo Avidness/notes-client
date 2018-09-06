@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from 'react';
+import { Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -14,12 +14,8 @@ class App extends React.Component {
       <div className='App'>
         <Header />
         <main id='content'>
-          <BrowserRouter>
-            <Fragment>
-              <Route path='/items' component={ItemListContainer} />
-              <Route path='/item/:itemid' component={ItemContainer} />
-            </Fragment>
-          </BrowserRouter>
+          <Route path='/items' component={ItemListContainer} />
+          <Route path='/item/:itemid' component={ItemContainer} />
         </main>
         <Footer />
       </div>
