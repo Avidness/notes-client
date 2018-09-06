@@ -1,7 +1,6 @@
 export const FETCH_ITEM = 'FETCH_ITEM';
 export const FETCH_ITEM_FAIL = 'FETCH_ITEM_FAIL';
 export const NEW_ITEM = 'NEW_ITEM';
-export const DELETE_ITEM = 'DELETE_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const SET_LOADING_ITEM = 'SET_LOADING_ITEM';
 
@@ -52,18 +51,4 @@ export const updateItem = item_to_update => dispatch => {
       payload: updated_item
     })
   );
-};
-
-export const deleteItem = item_to_delete => dispatch => {
-  fetch('http://localhost:5000/api/item/' + item_to_delete.id, {
-    method: 'DELETE'
-  })
-  .then((response) => {
-    dispatch({
-      type: DELETE_ITEM,
-      payload: item_to_delete.id
-    })
-  }).catch((err) => {
-      alert("There was a problem deleting the item.")
-  });
 };

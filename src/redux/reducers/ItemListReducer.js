@@ -20,6 +20,11 @@ export default function(state = initialState, action) {
         errorMessage: 'Problem talking to the Server',
         loading: false
       };
+    case Actions.DELETE_ITEM:
+      return {
+        ...state,
+        list: state.list.filter(({ id }) => id !== action.payload)
+      };
     default:
       return state;
   }

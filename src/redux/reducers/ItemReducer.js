@@ -36,11 +36,6 @@ export default function(state = initialState, action) {
                 ? action.payload
                 : item)
       };
-    case Actions.DELETE_ITEM:
-      return {
-        ...state,
-        list: state.list.filter(({ id }) => id !== action.payload)
-      };
     case Actions.SET_LOADING_ITEM:
       return {
         ...state,
