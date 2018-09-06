@@ -24,7 +24,9 @@ class ItemListContainer extends React.Component {
     }
     return (
       <Fragment>
-        <ItemList items={this.props.items} />
+        <ItemList
+          items={this.props.items}
+          onDeleteItem={this.props.onDeleteItem} />
       </Fragment>
     );
   }
@@ -40,6 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onFetchItems: ItemListActions.fetchItems,
+  onDeleteItem: ItemListActions.deleteItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemListContainer);

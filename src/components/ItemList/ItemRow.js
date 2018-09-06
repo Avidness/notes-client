@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@material-ui/core';
-import { Edit } from '@material-ui/icons';
+import { Edit, Delete } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
 
 export const ItemRow = (props) => {
@@ -21,6 +21,13 @@ export const ItemRow = (props) => {
             <Edit />
           </IconButton>
         </Link>
+
+        <IconButton 
+          color='inherit' 
+          aria-label='Edit'
+          onClick={() => props.onDeleteItem(item)}>
+          <Delete />
+        </IconButton>
       </Col>
     </Row>
   );
