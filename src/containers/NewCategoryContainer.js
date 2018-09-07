@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Typography } from '@material-ui/core';
 
-import Loading from '../components/Loading';
 import CategoryForm from '../components/CategoryForm';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
