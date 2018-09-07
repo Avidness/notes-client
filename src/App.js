@@ -1,5 +1,7 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,16 +15,20 @@ import './static/styles/App.css';
 class App extends React.Component {
   render() {
     return (
-      <div className='App'>
-        <Header />
-        <main id='content'>
-          <Route path='/items' component={ItemListContainer} />
-          <Route path='/item/:itemid' component={ItemContainer} />
-          <Route path='/newitem' component={NewItemContainer} />
-          <Route path='/newcategory' component={NewCategoryContainer} />
-        </main>
-        <Footer />
-      </div>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Fragment>
+            <Header />
+              <Switch>
+                <Route path='/items' component={ItemListContainer} />
+                <Route path='/item/:itemid' component={ItemContainer} />
+                <Route path='/newitem' component={NewItemContainer} />
+                <Route path='/newcategory' component={NewCategoryContainer} />
+              </Switch>
+            <Footer />
+          </Fragment>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
