@@ -20,7 +20,7 @@ export const createCategory = category_to_create => dispatch => {
   );
 };
 
-export const updateItem = category_to_update => dispatch => {
+export const updateCategory = category_to_update => dispatch => {
   fetch('http://localhost:5000/api/category/' + category_to_update.id, {
     method: 'PUT',
     headers: {
