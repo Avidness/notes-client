@@ -1,7 +1,21 @@
+export const FETCH_CATEGORY = 'FETCH_CATEGORY';
 export const NEW_CATEGORY = 'NEW_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 export const UPDATE_CUR_CATEGORY = 'UPDATE_CUR_CATEGORY';
+
+export const fetchCategory = (cat_id) => dispatch => {
+  fetch('http://localhost:5000/api/category/' + cat_id, {
+    method: 'GET',
+  })
+  .then(res => res.json())
+  .then(cat =>
+    dispatch({
+      type: FETCH_CATEGORY,
+      payload: cat.result
+    })
+  );
+};
 
 export const createCategory = category_to_create => dispatch => {
   fetch('http://localhost:5000/api/category', {

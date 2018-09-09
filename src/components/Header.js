@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Icon, IconButton, Typography }  from '@material-ui/core';
-import { Assignment, CreateNewFolder, LibraryAdd  } from '@material-ui/icons';
+import { Assignment, CreateNewFolder, LibraryAdd, Edit } from '@material-ui/icons';
 
 import MenuContainer from '../containers/MenuContainer';
 import '../static/styles/header.css';
@@ -18,6 +18,12 @@ const Header = () => {
         </Typography>
 
         <MenuContainer />
+
+        <Link to={'/category'}>
+          <IconButton color="inherit" aria-label="Edit Category">
+            <Edit />
+          </IconButton>
+        </Link>
 
         <Link to={'/newcategory'}>
           <IconButton color="inherit" aria-label="New Category">

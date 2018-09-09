@@ -4,11 +4,17 @@ const initialState = {
   list: [],
   loading: true,
   errorMessage: null,
-  curCategoryId: 1
+  category: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case Actions.FETCH_CATEGORY:
+      return {
+        ...state,
+        category: action.payload,
+        loading: false
+      };
     case Actions.NEW_CATEGORY:
       return {
         ...state,
