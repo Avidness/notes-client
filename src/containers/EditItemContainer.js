@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import ItemForm from '../components/ItemForm';
 import * as ItemActions from '../redux/actions/ItemActions';
 
-class ItemContainer extends React.Component {
+class EditItemContainer extends React.Component {
   componentWillMount(){
     var itemid = this.props.match.params.itemid;
     this.props.onFetchItem(itemid);
@@ -40,4 +40,4 @@ const mapDispatchToProps = {
   onUpdateItem: ItemActions.updateItem
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EditItemContainer);
