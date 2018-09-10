@@ -1,16 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Typography } from '@material-ui/core';
 
+import Loading from '../components/Loading';
 import CategoryForm from '../components/CategoryForm';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class EditCategoryContainer extends React.Component {
   componentWillMount(){
     var curCategoryId = this.props.curCategoryId;
-    console.log(this.props.curCategoryId)
     this.props.onFetchCategory(curCategoryId);
   }
   render() {
+    if(this.props.errorMessage){
+      return <Typography color='error'>{this.props.errorMessage}</Typography>
+    }
+    if(this.props.loading){
+      return <Loading />
+    }
     return (
       <CategoryForm
         category={this.props.category} 

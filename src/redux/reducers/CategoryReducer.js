@@ -39,6 +39,11 @@ export default function(state = initialState, action) {
         ...state,
         curCategoryId: action.payload
       };
+    case Actions.SET_LOADING_CATEGORY:
+      return {
+        ...state,
+        loading: true
+      };
     default:
       return state;
   }

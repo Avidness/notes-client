@@ -3,8 +3,11 @@ export const NEW_CATEGORY = 'NEW_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 export const UPDATE_CUR_CATEGORY = 'UPDATE_CUR_CATEGORY';
+export const SET_LOADING_CATEGORY = 'SET_LOADING_CATEGORY';
 
 export const fetchCategory = (cat_id) => dispatch => {
+  dispatch({ type: SET_LOADING_CATEGORY });
+
   fetch('http://localhost:5000/api/category/' + cat_id, {
     method: 'GET',
   })
