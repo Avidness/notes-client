@@ -1,7 +1,6 @@
 import * as Actions from '../actions/CategoryActions';
 
 const initialState = {
-  list: [],
   loading: true,
   errorMessage: null,
   category: {}
