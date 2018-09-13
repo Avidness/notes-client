@@ -6,7 +6,6 @@ import { Row, Col } from 'react-flexbox-grid';
 
 export const ItemRow = (props) => {
   let item = props.item;
-  
   return (
     <Row className="item-row">
       <Col xs={6} sm={4}>
