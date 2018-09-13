@@ -18,7 +18,7 @@ export const ItemRow = (props) => {
       </Col>
 
       <Col xs={12} sm={4}>
-        <Link to={'/item/' + props.item.id}>
+        <Link to={'/item/' + item.id}>
           <IconButton color='inherit' aria-label='Edit'>
             <Edit />
           </IconButton>
