@@ -20,12 +20,6 @@ export default function(state = initialState, action) {
         list: dict,
         loading: false
       };
-    case Actions.ITEM_FAIL:
-      return {
-        ...state,
-        errorMessage: 'Problem talking to the Server',
-        loading: false
-      };
     case Actions.FETCH_ITEM:
       return {
         ...state,
@@ -55,6 +49,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
+      };
+    case Actions.ITEM_FAIL:
+      return {
+        ...state,
+        errorMessage: 'Problem talking to the Server',
+        loading: false
       };
     default:
       return state;
