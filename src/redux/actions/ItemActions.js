@@ -25,25 +25,6 @@ export const fetchItems = (category_id) => dispatch => {
   });
 };
 
-export const deleteItem = item_to_delete => dispatch => {
-  dispatch({ type: SET_LOADING_ITEM });
-  
-  fetch('http://localhost:5000/api/item/' + item_to_delete.id, {
-    method: 'DELETE'
-  })
-  .then((response) => {
-    dispatch({
-      type: DELETE_ITEM,
-      payload: item_to_delete.id
-    })
-  }).catch((e) => {
-    dispatch({
-      type: ITEM_FAIL,
-      payload: e
-    })
-  });
-};
-
 export const fetchItem = (item_id) => dispatch => {
   dispatch({ type: SET_LOADING_ITEM });
 
@@ -101,6 +82,25 @@ export const updateItem = item_to_update => dispatch => {
       payload: updated_item
     })
   ).catch((e) => {
+    dispatch({
+      type: ITEM_FAIL,
+      payload: e
+    })
+  });
+};
+
+export const deleteItem = item_to_delete => dispatch => {
+  dispatch({ type: SET_LOADING_ITEM });
+  
+  fetch('http://localhost:5000/api/item/' + item_to_delete.id, {
+    method: 'DELETE'
+  })
+  .then((response) => {
+    dispatch({
+      type: DELETE_ITEM,
+      payload: item_to_delete.id
+    })
+  }).catch((e) => {
     dispatch({
       type: ITEM_FAIL,
       payload: e
