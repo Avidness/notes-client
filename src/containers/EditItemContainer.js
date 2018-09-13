@@ -18,6 +18,9 @@ class EditItemContainer extends React.Component {
     if(this.props.loading){
       return <Loading />
     }
+    if(this.props.item === null){
+      return <Loading />
+    }
     return (
       <ItemForm
         item={this.props.item} 
@@ -29,6 +32,7 @@ class EditItemContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  items: state.items.list,
   item: state.items.item,
   loading: state.items.loading,
   errorMessage: state.items.errorMessage,

@@ -4,7 +4,7 @@ import { Typography } from '@material-ui/core';
 
 import Loading from '../components/Loading';
 import ItemList from '../components/ItemList/ItemList';
-import * as ItemListActions from '../redux/actions/ItemListActions';
+import * as ItemActions from '../redux/actions/ItemActions';
 
 class ItemListContainer extends React.Component {
   componentWillMount(){
@@ -33,16 +33,16 @@ class ItemListContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.itemList.list,
-  loading: state.itemList.loading,
-  errorMessage: state.itemList.errorMessage,
+  items: state.items.list,
+  loading: state.items.loading,
+  errorMessage: state.items.errorMessage,
   categories: state.categories.list,
   curCategoryId: state.categories.curCategoryId
 });
 
 const mapDispatchToProps = {
-  onFetchItems: ItemListActions.fetchItems,
-  onDeleteItem: ItemListActions.deleteItem
+  onFetchItems: ItemActions.fetchItems,
+  onDeleteItem: ItemActions.deleteItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemListContainer);
