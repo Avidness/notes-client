@@ -56,7 +56,12 @@ export const fetchItem = (item_id) => dispatch => {
       type: FETCH_ITEM,
       payload: item.result
     })
-  );
+  ).catch((e) => {
+    dispatch({
+      type: ITEM_FAIL,
+      payload: e
+    })
+  });
 };
 
 export const createItem = item_to_create => dispatch => {
@@ -73,7 +78,12 @@ export const createItem = item_to_create => dispatch => {
       type: NEW_ITEM,
       payload: new_item
     })
-  );
+  ).catch((e) => {
+    dispatch({
+      type: ITEM_FAIL,
+      payload: e
+    })
+  });
 };
 
 export const updateItem = item_to_update => dispatch => {
@@ -90,5 +100,10 @@ export const updateItem = item_to_update => dispatch => {
       type: UPDATE_ITEM,
       payload: updated_item
     })
-  );
+  ).catch((e) => {
+    dispatch({
+      type: ITEM_FAIL,
+      payload: e
+    })
+  });
 };
