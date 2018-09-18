@@ -16,8 +16,8 @@ class NewCategoryContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.category.loading,
-  errorMessage: state.category.errorMessage
+  loading: state.categories.loading,
+  errorMessage: state.categories.errorMessage
 });
 
 const mapDispatchToProps = {

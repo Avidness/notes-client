@@ -8,13 +8,11 @@ class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
-    this.state = {
-      category: {}
-    };
-  }
-  componentDidMount(){
+
     const edit_category = Object.assign({}, this.props.category);
-    this.setState({ category: edit_category });
+    this.state = {
+      category: edit_category
+    };
   }
   onChange(e) {
     let edit_category = this.state.category;

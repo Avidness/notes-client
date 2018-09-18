@@ -3,13 +3,11 @@ import { applyMiddleware, compose,
   combineReducers, createStore } from 'redux';
 
   import ItemReducer from './reducers/ItemReducer';
-  import CategoryListReducer from './reducers/CategoryListReducer';
   import CategoryReducer from './reducers/CategoryReducer';
 
 const allReducers = combineReducers({
   items: ItemReducer,
-  categories: CategoryListReducer,
-  category: CategoryReducer
+  categories: CategoryReducer
 })
 
 const allStoreEnhancers = compose(

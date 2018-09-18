@@ -1,8 +1,36 @@
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 export const FETCH_CATEGORY = 'FETCH_CATEGORY';
 export const NEW_CATEGORY = 'NEW_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 export const SET_LOADING_CATEGORY = 'SET_LOADING_CATEGORY';
+export const FETCH_FAIL_CATEGORY = 'FETCH_FAIL_CATEGORY';
+export const UPDATE_CUR_CATEGORY = 'UPDATE_CUR_CATEGORY';
+
+export const fetchCategories = () => dispatch => {
+  fetch('http://localhost:5000/api/category', {
+    method: 'GET',
+  })
+  .then(res => res.json())
+  .then(cateogry_list =>
+    dispatch({
+      type: FETCH_CATEGORIES,
+      payload: cateogry_list
+    })
+  ).catch(e => {
+    dispatch({
+      type: FETCH_FAIL_CATEGORY,
+      payload: e
+    })
+  });
+};
+
+export const updateCurCategory = newCategoryId => dispatch => {
+  dispatch({
+    type: UPDATE_CUR_CATEGORY,
+    payload: newCategoryId
+  })
+};
 
 export const fetchCategory = (cat_id) => dispatch => {
   dispatch({ type: SET_LOADING_CATEGORY });

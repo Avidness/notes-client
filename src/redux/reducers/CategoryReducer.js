@@ -1,9 +1,11 @@
 import * as Actions from '../actions/CategoryActions';
 
 const initialState = {
+  category: null,
+  list: [],
   loading: true,
   errorMessage: null,
-  category: {}
+  curCategoryId: 1
 };
 
 export default function(state = initialState, action) {
@@ -13,6 +15,23 @@ export default function(state = initialState, action) {
         ...state,
         category: action.payload,
         loading: false
+      };
+    case Actions.FETCH_CATEGORIES:
+      return {
+        ...state,
+        list: action.payload,
+        loading: false
+      };
+    case Actions.FETCH_FAIL_CATEGORY:
+      return {
+        ...state,
+        errorMessage: 'Problem talking to the Server',
+        loading: false
+      };
+    case Actions.UPDATE_CUR_CATEGORY:
+      return {
+        ...state,
+        curCategoryId: action.payload
       };
     case Actions.NEW_CATEGORY:
       return {

@@ -7,7 +7,7 @@ import CategoryForm from '../components/CategoryForm';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class EditCategoryContainer extends React.Component {
-  componentWillMount(){
+  componentDidMount(){
     var curCategoryId = this.props.curCategoryId;
     this.props.onFetchCategory(curCategoryId);
   }
@@ -16,6 +16,9 @@ class EditCategoryContainer extends React.Component {
       return <Typography color='error'>{this.props.errorMessage}</Typography>
     }
     if(this.props.loading){
+      return <Loading />
+    }
+    if(this.props.category == null){
       return <Loading />
     }
     return (
@@ -28,10 +31,10 @@ class EditCategoryContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.category.loading,
-  errorMessage: state.category.errorMessage,
+  loading: state.categories.loading,
+  errorMessage: state.categories.errorMessage,
   curCategoryId: state.categories.curCategoryId,
-  category: state.category.category
+  category: state.categories.category
 });
 
 const mapDispatchToProps = {
