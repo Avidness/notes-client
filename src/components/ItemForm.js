@@ -9,13 +9,9 @@ class ItemForm extends React.Component {
     super(props);
     this.onChange = this.onChange.bind(this);
     this.onCategoryChange = this.onCategoryChange.bind(this);
-    this.state = {
-      item: {}
-    };
-  }
-  componentWillMount(){
+
     const edit_item = Object.assign({}, this.props.item);
-    this.setState({ item: edit_item });
+    this.state = { item: edit_item };
   }
   onChange(e) {
     let edited_item = this.state.item;
