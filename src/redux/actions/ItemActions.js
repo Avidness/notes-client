@@ -8,6 +8,7 @@ export const SET_LOADING_ITEM = 'SET_LOADING_ITEM';
 
 export const fetchItems = (category_id) => dispatch => {
   dispatch({ type: SET_LOADING_ITEM });
+  
   fetch('http://localhost:5000/api/item/category/' + category_id, {
     method: 'GET',
   })
