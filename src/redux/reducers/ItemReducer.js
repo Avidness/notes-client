@@ -1,8 +1,7 @@
 import * as Actions from '../actions/ItemActions';
 
 const initialState = {
-  list: {},
-  item: null,
+  list: null,
   loading: true,
   errorMessage: null
 };
@@ -21,9 +20,11 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.FETCH_ITEM:
+      var list = {};
+      list[action.payload.id] = action.payload;
       return {
         ...state,
-        item: action.payload,
+        list: list,
         loading: false
       };
     case Actions.NEW_ITEM:

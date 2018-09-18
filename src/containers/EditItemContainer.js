@@ -7,23 +7,29 @@ import ItemForm from '../components/ItemForm';
 import * as ItemActions from '../redux/actions/ItemActions';
 
 class EditItemContainer extends React.Component {
-  componentWillMount(){
-    var itemid = this.props.match.params.itemid;
-    this.props.onFetchItem(itemid);
+  constructor(props) {
+    super(props);
+    var id = this.props.match.params.itemid;
+    if(this.props.items === null 
+      || this.props.items[id] === null){
+      this.props.onFetchItem(id);
+    }
   }
   render() {
+    var id = this.props.match.params.itemid;
     if(this.props.errorMessage){
       return <Typography color='error'>{this.props.errorMessage}</Typography>
     }
     if(this.props.loading){
       return <Loading />
     }
-    if(this.props.item === null){
+    if(this.props.items[id] === null){
       return <Loading />
     }
+    let item = this.props.items[id];
     return (
       <ItemForm
-        item={this.props.item} 
+        item={item} 
         loading={this.props.loading}
         categories={this.props.categories} 
         onSubmit={this.props.onUpdateItem} />
@@ -33,7 +39,6 @@ class EditItemContainer extends React.Component {
 
 const mapStateToProps = state => ({
   items: state.items.list,
-  item: state.items.item,
   loading: state.items.loading,
   errorMessage: state.items.errorMessage,
   categories: state.categories.list
