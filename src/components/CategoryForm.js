@@ -12,7 +12,7 @@ class CategoryForm extends React.Component {
       category: {}
     };
   }
-  componentWillMount(){
+  componentDidMount(){
     const edit_category = Object.assign({}, this.props.category);
     this.setState({ category: edit_category });
   }

@@ -7,10 +7,10 @@ import ItemList from '../components/ItemList/ItemList';
 import * as ItemActions from '../redux/actions/ItemActions';
 
 class ItemListContainer extends React.Component {
-  componentWillMount(){
+  componentDidMount(){
     this.props.onFetchItems(this.props.curCategoryId);
   }
-  componentWillUpdate(nextProps){
+  componentDidUpdate(nextProps){
     if(this.props.curCategoryId !== nextProps.curCategoryId){
       this.props.onFetchItems(nextProps.curCategoryId);
     }
