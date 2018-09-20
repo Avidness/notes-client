@@ -4,7 +4,7 @@ export const NEW_CATEGORY = 'NEW_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 export const SET_LOADING_CATEGORY = 'SET_LOADING_CATEGORY';
-export const FETCH_FAIL_CATEGORY = 'FETCH_FAIL_CATEGORY';
+export const CATEGORY_FAIL = 'CATEGORY_FAIL';
 export const UPDATE_CUR_CATEGORY = 'UPDATE_CUR_CATEGORY';
 
 export const fetchCategories = () => dispatch => {
@@ -19,7 +19,7 @@ export const fetchCategories = () => dispatch => {
     })
   ).catch(e => {
     dispatch({
-      type: FETCH_FAIL_CATEGORY,
+      type: CATEGORY_FAIL,
       payload: e
     })
   });
@@ -44,7 +44,12 @@ export const fetchCategory = (cat_id) => dispatch => {
       type: FETCH_CATEGORY,
       payload: cat.result
     })
-  );
+  ).catch((e) => {
+    dispatch({
+      type: CATEGORY_FAIL,
+      payload: e
+    })
+  });
 };
 
 export const createCategory = category_to_create => dispatch => {
@@ -61,7 +66,12 @@ export const createCategory = category_to_create => dispatch => {
       type: NEW_CATEGORY,
       payload: new_category
     })
-  );
+  ).catch((e) => {
+    dispatch({
+      type: CATEGORY_FAIL,
+      payload: e
+    })
+  });
 };
 
 export const updateCategory = category_to_update => dispatch => {
@@ -78,7 +88,12 @@ export const updateCategory = category_to_update => dispatch => {
       type: UPDATE_CATEGORY,
       payload: updated_category
     })
-  );
+  ).catch((e) => {
+    dispatch({
+      type: CATEGORY_FAIL,
+      payload: e
+    })
+  });
 };
 
 export const deleteCategory = category_to_delete => dispatch => {
@@ -90,7 +105,10 @@ export const deleteCategory = category_to_delete => dispatch => {
       type: DELETE_CATEGORY,
       payload: category_to_delete.id
     })
-  }).catch((err) => {
-      alert("There was a problem deleting the category.")
+  }).catch((e) => {
+    dispatch({
+      type: CATEGORY_FAIL,
+      payload: e
+    })
   });
 };
