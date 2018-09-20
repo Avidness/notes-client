@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -26,6 +26,7 @@ class App extends React.Component {
                 <Route path='/newitem' component={NewItemContainer} />
                 <Route path='/newcategory' component={NewCategoryContainer} />
                 <Route path='/category' component={CategoryContainer} />
+                <Redirect to="/items" />
               </Switch>
             <Footer />
           </Fragment>
