@@ -22,12 +22,6 @@ export default function(state = initialState, action) {
         list: action.payload,
         loading: false
       };
-    case Actions.FETCH_FAIL_CATEGORY:
-      return {
-        ...state,
-        errorMessage: 'Problem talking to the Server',
-        loading: false
-      };
     case Actions.UPDATE_CUR_CATEGORY:
       return {
         ...state,
@@ -56,6 +50,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
+      };
+    case Actions.CATEGORY_FAIL:
+      return {
+        ...state,
+        errorMessage: 'Problem talking to the Server',
+        loading: false
       };
     default:
       return state;
