@@ -8,6 +8,8 @@ export const CATEGORY_FAIL = 'CATEGORY_FAIL';
 export const UPDATE_CUR_CATEGORY = 'UPDATE_CUR_CATEGORY';
 
 export const fetchCategories = () => dispatch => {
+  dispatch({ type: SET_LOADING_CATEGORY });
+  
   fetch('http://localhost:5000/api/category', {
     method: 'GET',
   })
@@ -26,6 +28,8 @@ export const fetchCategories = () => dispatch => {
 };
 
 export const updateCurCategory = newCategoryId => dispatch => {
+  dispatch({ type: SET_LOADING_CATEGORY });
+  
   dispatch({
     type: UPDATE_CUR_CATEGORY,
     payload: newCategoryId
@@ -53,6 +57,8 @@ export const fetchCategory = (cat_id) => dispatch => {
 };
 
 export const createCategory = category_to_create => dispatch => {
+  dispatch({ type: SET_LOADING_CATEGORY });
+
   fetch('http://localhost:5000/api/category', {
     method: 'POST',
     headers: {
@@ -75,6 +81,8 @@ export const createCategory = category_to_create => dispatch => {
 };
 
 export const updateCategory = category_to_update => dispatch => {
+  dispatch({ type: SET_LOADING_CATEGORY });
+  
   fetch('http://localhost:5000/api/category/' + category_to_update.id, {
     method: 'PUT',
     headers: {
@@ -97,6 +105,8 @@ export const updateCategory = category_to_update => dispatch => {
 };
 
 export const deleteCategory = category_to_delete => dispatch => {
+  dispatch({ type: SET_LOADING_CATEGORY });
+  
   fetch('http://localhost:5000/api/category/' + category_to_delete.id, {
     method: 'DELETE'
   })

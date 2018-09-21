@@ -25,13 +25,14 @@ export default function(state = initialState, action) {
     case Actions.UPDATE_CUR_CATEGORY:
       return {
         ...state,
-        curCategoryId: action.payload
+        curCategoryId: action.payload,
+        loading: false
       };
     case Actions.NEW_CATEGORY:
       return {
         ...state,
-        openCreation: false,
-        list: [...state.list, action.payload]
+        list: [...state.list, action.payload],
+        loading: false
       };
     case Actions.UPDATE_CATEGORY:
       return {
@@ -39,12 +40,14 @@ export default function(state = initialState, action) {
         list: state.list.map((item) => 
                 item.id === action.payload.id
                 ? action.payload
-                : item)
+                : item),
+        loading: false
       };
     case Actions.DELETE_CATEGORY:
       return {
         ...state,
-        list: state.list.filter(({ id }) => id !== action.payload)
+        list: state.list.filter(({ id }) => id !== action.payload),
+        loading: false
       };
     case Actions.SET_LOADING_CATEGORY:
       return {
