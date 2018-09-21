@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Select, MenuItem, Input, IconButton } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
+import _ from 'lodash/core';
 
 class ItemForm extends React.Component {
   constructor(props) {
@@ -43,9 +44,9 @@ class ItemForm extends React.Component {
             <Select 
               onChange={this.onCategoryChange}
               value={this.state.item.category.id}>
-              {this.props.categories.map(function (cat, i) {
-                return <MenuItem key={i} value={cat.id}>{cat.label}</MenuItem>})
-              }
+              {_.map(this.props.categories, function(cat, key) {
+                return <MenuItem key={key} value={cat.id}>{cat.label}</MenuItem>})
+              })}
             </Select>
           </Col>
           <Col sm={6} lg={3}>

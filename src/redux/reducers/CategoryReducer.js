@@ -1,8 +1,7 @@
 import * as Actions from '../actions/CategoryActions';
 
 const initialState = {
-  category: null,
-  list: [],
+  list: null,
   loading: true,
   errorMessage: null,
   curCategoryId: 1
@@ -10,16 +9,23 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case Actions.FETCH_CATEGORY:
+    case Actions.FETCH_CATEGORIES:
+      var new_list = action.payload
+        .reduce(function(result, item) {
+          result[item.id] = item;
+          return result;
+        }, {});
       return {
         ...state,
-        category: action.payload,
+        list: new_list,
         loading: false
       };
-    case Actions.FETCH_CATEGORIES:
+    case Actions.FETCH_CATEGORY:
+      var append_list = state.list;
+      append_list[action.payload.id] = action.payload;
       return {
         ...state,
-        list: action.payload,
+        list: append_list,
         loading: false
       };
     case Actions.UPDATE_CUR_CATEGORY:
@@ -29,24 +35,27 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.NEW_CATEGORY:
+      var add_list = state.list;
+      add_list[action.payload.id] = action.payload;
       return {
         ...state,
-        list: [...state.list, action.payload],
+        list: add_list,
         loading: false
       };
     case Actions.UPDATE_CATEGORY:
+      var update_list = state.list;
+      update_list[action.payload.id] = action.payload;
       return {
         ...state,
-        list: state.list.map((item) => 
-                item.id === action.payload.id
-                ? action.payload
-                : item),
+        list: update_list,
         loading: false
       };
     case Actions.DELETE_CATEGORY:
+      var items = state.list;
+      delete items[action.payload];
       return {
         ...state,
-        list: state.list.filter(({ id }) => id !== action.payload),
+        list: items,
         loading: false
       };
     case Actions.SET_LOADING_CATEGORY:

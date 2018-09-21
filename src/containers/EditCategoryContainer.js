@@ -12,18 +12,19 @@ class EditCategoryContainer extends React.Component {
     this.props.onFetchCategory(curCategoryId);
   }
   render() {
+    var curCategoryId = this.props.curCategoryId;
     if(this.props.errorMessage){
       return <Typography color='error'>{this.props.errorMessage}</Typography>
     }
     if(this.props.loading){
       return <Loading />
     }
-    if(this.props.category == null){
+    if(this.props.categories[curCategoryId] == null){
       return <Loading />
     }
     return (
       <CategoryForm
-        category={this.props.category} 
+        category={this.props.categories[curCategoryId]} 
         loading={this.props.loading}
         onSubmit={this.props.onUpdateCategory} />
     );
@@ -34,7 +35,7 @@ const mapStateToProps = state => ({
   loading: state.categories.loading,
   errorMessage: state.categories.errorMessage,
   curCategoryId: state.categories.curCategoryId,
-  category: state.categories.category
+  categories: state.categories.list
 });
 
 const mapDispatchToProps = {

@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Tabs, Tab }  from '@material-ui/core';
 import { Folder } from '@material-ui/icons';
+import _ from 'lodash/core';
 
+import Loading from '../components/Loading';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class MenuContainer extends React.Component {
@@ -14,8 +16,8 @@ class MenuContainer extends React.Component {
   };
   render() {
     let category_id = this.props.curCategoryId;
-    if(!category_id){
-      return null;
+    if(this.props.loading){
+      return <Loading />;
     }
     return (
       <Tabs 
@@ -24,18 +26,20 @@ class MenuContainer extends React.Component {
         value={category_id} 
         scrollable>
 
-        {this.props.categories.map((x, i) => (
-          <Tab 
-            key={x.id}
-            value={x.id}
-            label={x.label}
-            icon={<Folder />} />))}
+        {_.map(this.props.categories, function(cat, key) {
+          return <Tab 
+            key={cat.id}
+            value={cat.id}
+            label={cat.label}
+            icon={<Folder />} />
+        })}
       </Tabs>
     );
   };
 }
 
 const mapStateToProps = state => ({
+  loading: state.categories.loading,
   categories: state.categories.list,
   curCategoryId: state.categories.curCategoryId
 });
