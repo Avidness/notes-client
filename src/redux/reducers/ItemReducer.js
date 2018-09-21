@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.FETCH_ITEM:
-      var append_list = {};
+      var append_list = (state.list ? state.list : {});
       append_list[action.payload.id] = action.payload;
       return {
         ...state,
@@ -28,7 +28,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.NEW_ITEM:
-      var add_list = {};
+      var add_list = (state.list ? state.list : {});
       add_list[action.payload.id] = action.payload;
       return {
         ...state,
@@ -36,7 +36,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.UPDATE_ITEM:
-      var update_list = {};
+      var update_list = state.list;
       update_list[action.payload.id] = action.payload;
       return {
         ...state,
