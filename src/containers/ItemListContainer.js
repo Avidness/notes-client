@@ -10,9 +10,9 @@ class ItemListContainer extends React.Component {
   componentDidMount(){
     this.props.onFetchItems(this.props.curCategoryId);
   }
-  componentDidUpdate(nextProps){
-    if(this.props.curCategoryId !== nextProps.curCategoryId){
-      this.props.onFetchItems(nextProps.curCategoryId);
+  componentDidUpdate(prevProps){
+    if(this.props.curCategoryId !== prevProps.curCategoryId){
+      this.props.onFetchItems(this.props.curCategoryId);
     }
   }
   render() {
