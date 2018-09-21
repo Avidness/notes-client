@@ -9,34 +9,37 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case Actions.FETCH_ITEMS:
-      var dict = action.payload
+      var new_list = action.payload
         .reduce(function(result, item) {
           result[item.id] = item;
           return result;
         }, {});
       return {
         ...state,
-        list: dict,
+        list: new_list,
         loading: false
       };
     case Actions.FETCH_ITEM:
-      var list = {};
-      list[action.payload.id] = action.payload;
+      var append_list = {};
+      append_list[action.payload.id] = action.payload;
       return {
         ...state,
-        list: list,
+        list: append_list,
         loading: false
       };
     case Actions.NEW_ITEM:
+      var add_list = {};
+      add_list[action.payload.id] = action.payload;
       return {
         ...state,
-        openCreation: false,
-        list: [...state.list, action.payload]
+        list: add_list
       };
     case Actions.UPDATE_ITEM:
+      var update_list = {};
+      update_list[action.payload.id] = action.payload;
       return {
         ...state,
-        list: state.list[action.payload.id] = action.payload
+        list: update_list
       };
     case Actions.DELETE_ITEM:
       var items = state.list;
