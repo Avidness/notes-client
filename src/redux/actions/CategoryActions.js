@@ -27,15 +27,6 @@ export const fetchCategories = () => dispatch => {
   });
 };
 
-export const updateCurCategory = newCategoryId => dispatch => {
-  dispatch({ type: SET_LOADING_CATEGORY });
-  
-  dispatch({
-    type: UPDATE_CUR_CATEGORY,
-    payload: newCategoryId
-  })
-};
-
 export const fetchCategory = (cat_id) => dispatch => {
   dispatch({ type: SET_LOADING_CATEGORY });
 
@@ -54,6 +45,15 @@ export const fetchCategory = (cat_id) => dispatch => {
       payload: e
     })
   });
+};
+
+export const updateCurCategory = newCategoryId => dispatch => {
+  dispatch({ type: SET_LOADING_CATEGORY });
+  
+  dispatch({
+    type: UPDATE_CUR_CATEGORY,
+    payload: newCategoryId
+  })
 };
 
 export const createCategory = category_to_create => dispatch => {
