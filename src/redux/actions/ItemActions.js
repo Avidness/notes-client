@@ -47,6 +47,8 @@ export const fetchItem = (item_id) => dispatch => {
 };
 
 export const createItem = item_to_create => dispatch => {
+  dispatch({ type: SET_LOADING_ITEM });
+
   fetch('http://localhost:5000/api/item', {
     method: 'POST',
     headers: {
@@ -69,6 +71,8 @@ export const createItem = item_to_create => dispatch => {
 };
 
 export const updateItem = item_to_update => dispatch => {
+  dispatch({ type: SET_LOADING_ITEM });
+
   fetch('http://localhost:5000/api/item/' + item_to_update.id, {
     method: 'PUT',
     headers: {

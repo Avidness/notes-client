@@ -32,14 +32,16 @@ export default function(state = initialState, action) {
       add_list[action.payload.id] = action.payload;
       return {
         ...state,
-        list: add_list
+        list: add_list,
+        loading: false
       };
     case Actions.UPDATE_ITEM:
       var update_list = {};
       update_list[action.payload.id] = action.payload;
       return {
         ...state,
-        list: update_list
+        list: update_list,
+        loading: false
       };
     case Actions.DELETE_ITEM:
       var items = state.list;
