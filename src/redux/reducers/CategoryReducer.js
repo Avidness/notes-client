@@ -4,7 +4,7 @@ const initialState = {
   list: null,
   loading: true,
   errorMessage: null,
-  curCategoryId: 1
+  curCategoryId: ''
 };
 
 export default function(state = initialState, action) {
@@ -18,6 +18,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         list: new_list,
+        curCategoryId: Object.keys(new_list)[0],
         loading: false
       };
     case Actions.FETCH_CATEGORY:

@@ -8,7 +8,9 @@ import * as ItemActions from '../redux/actions/ItemActions';
 
 class ItemListContainer extends React.Component {
   componentDidMount(){
-    this.props.onFetchItems(this.props.curCategoryId);
+    if(this.props.curCategoryId !== ''){
+      this.props.onFetchItems(this.props.curCategoryId);
+    }
   }
   componentDidUpdate(prevProps){
     if(this.props.curCategoryId !== prevProps.curCategoryId){
