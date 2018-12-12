@@ -9,11 +9,17 @@ import * as ItemActions from '../redux/actions/ItemActions';
 class EditItemContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.onUpdate = this.onUpdate.bind(this);
+
     var id = this.props.match.params.itemid;
     if(this.props.items === null 
       || this.props.items[id] === null){
       this.props.onFetchItem(id);
     }
+  }
+  onUpdate(item){
+    this.props.onUpdateItem(item);
+    this.props.history.push('/item')
   }
   render() {
     var id = this.props.match.params.itemid;
@@ -32,7 +38,7 @@ class EditItemContainer extends React.Component {
         item={item} 
         loading={this.props.loading}
         categories={this.props.categories} 
-        onSubmit={this.props.onUpdateItem} />
+        onSubmit={this.onUpdate} />
     );
   }
 }

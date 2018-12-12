@@ -9,6 +9,8 @@ import * as ItemActions from '../redux/actions/ItemActions';
 class NewItemContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.onCreate = this.onCreate.bind(this);
+
     this.state = {
       item: {
         label: '',
@@ -18,6 +20,10 @@ class NewItemContainer extends React.Component {
         }
       }
     };
+  }
+  onCreate(item){
+    this.props.onCreateItem(item);
+    this.props.history.push('/item')
   }
   render() {
     if(this.props.errorMessage){
@@ -31,7 +37,7 @@ class NewItemContainer extends React.Component {
         item={this.state.item} 
         loading={this.props.loading}
         categories={this.props.categories} 
-        onSubmit={this.props.onCreateItem} />
+        onSubmit={this.onCreate} />
     );
   }
 }
