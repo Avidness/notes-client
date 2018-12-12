@@ -5,7 +5,7 @@ import ItemRow from './ItemRow';
 const ItemList = (props) => {
   return (
     <Fragment>
-      {_.map(props.items, function(item, key) {
+      {_.map(props.items, (item, key) => {
         return <ItemRow key={key} 
           item={item}
           onDeleteItem={props.onDeleteItem} />
