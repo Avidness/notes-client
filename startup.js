@@ -1,5 +1,5 @@
-let chalk = require('chalk');
-let figlet = require('figlet');
+const chalk = require('chalk');
+const figlet = require('figlet');
 
 figlet('Notes', {
     font: 'epic'
