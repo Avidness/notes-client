@@ -10,7 +10,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case Actions.FETCH_CATEGORIES:
-      var new_list = action.payload
+      let new_list = action.payload
         .reduce(function(result, item) {
           result[item.id] = item;
           return result;
@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.FETCH_CATEGORY:
-      var append_list = state.list;
+      let append_list = Object.assign({}, state.list);
       append_list[action.payload.id] = action.payload;
       return {
         ...state,
@@ -36,7 +36,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.NEW_CATEGORY:
-      var add_list = state.list;
+      let add_list = Object.assign({}, state.list);
       add_list[action.payload.id] = action.payload;
       return {
         ...state,
@@ -44,7 +44,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.UPDATE_CATEGORY:
-      var update_list = state.list;
+      let update_list = Object.assign({}, state.list);
       update_list[action.payload.id] = action.payload;
       return {
         ...state,
@@ -52,7 +52,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.DELETE_CATEGORY:
-      var items = state.list;
+      let items = Object.assign({}, state.list);
       delete items[action.payload];
       return {
         ...state,
