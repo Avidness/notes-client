@@ -7,9 +7,17 @@ import CategoryForm from '../components/CategoryForm';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class EditCategoryContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onDelete = this.onDelete.bind(this);
+  }
   componentDidMount(){
     var curCategoryId = this.props.curCategoryId;
     this.props.onFetchCategory(curCategoryId);
+  }
+  onDelete(item){
+    this.props.onDeleteCategory(item);
+    this.props.history.push('/item')
   }
   render() {
     var curCategoryId = this.props.curCategoryId;
@@ -26,7 +34,8 @@ class EditCategoryContainer extends React.Component {
       <CategoryForm
         category={this.props.categories[curCategoryId]} 
         loading={this.props.loading}
-        onSubmit={this.props.onUpdateCategory} />
+        onSubmit={this.props.onUpdateCategory} 
+        onDelete={this.onDelete} />
     );
   }
 }
@@ -40,7 +49,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onFetchCategory: CategoryActions.fetchCategory,
-  onUpdateCategory: CategoryActions.updateCategory
+  onUpdateCategory: CategoryActions.updateCategory,
+  onDeleteCategory: CategoryActions.deleteCategory
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCategoryContainer);

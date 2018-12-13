@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, IconButton } from '@material-ui/core';
-import { Save, Cancel } from '@material-ui/icons';
+import { Save, Cancel, Delete } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
 
 class CategoryForm extends React.Component {
@@ -20,6 +20,14 @@ class CategoryForm extends React.Component {
     this.setState({ item: edit_category});
   }
   render(){
+    let deleteButton = (this.props.onDelete 
+      ? <IconButton 
+          color='inherit' 
+          aria-label='Edit'
+          onClick={() => this.props.onDelete(this.state.category)}>
+          <Delete />
+        </IconButton> 
+        : null);
     return (
       <Fragment>
         <Row>
@@ -36,6 +44,7 @@ class CategoryForm extends React.Component {
               onClick={() => this.props.onSubmit(this.state.category)}>
               <Save />
             </IconButton>
+            {deleteButton}
             <Link to={'/items/'}>
               <IconButton color="inherit" aria-label="Cancel">
                 <Cancel />
