@@ -63,7 +63,7 @@ export default function(state = initialState, action) {
     case Actions.ITEM_FAIL:
       return {
         ...state,
-        errorMessage: 'Problem talking to the Server',
+        errorMessage: 'Item: ' + action.payload.toString(),
         loading: false
       };
     default:

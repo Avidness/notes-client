@@ -67,7 +67,7 @@ export default function(state = initialState, action) {
     case Actions.CATEGORY_FAIL:
       return {
         ...state,
-        errorMessage: 'Problem talking to the Server',
+        errorMessage: 'Category: ' + action.payload.toString(),
         loading: false
       };
     default:
