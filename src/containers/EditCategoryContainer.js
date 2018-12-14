@@ -10,6 +10,7 @@ class EditCategoryContainer extends React.Component {
   constructor(props) {
     super(props);
     this.onDelete = this.onDelete.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
   }
   componentDidMount(){
     var curCategoryId = this.props.curCategoryId;
@@ -17,6 +18,10 @@ class EditCategoryContainer extends React.Component {
   }
   onDelete(item){
     this.props.onDeleteCategory(item);
+    this.props.history.push('/item')
+  }
+  onUpdate(item){
+    this.props.onUpdateCategory(item);
     this.props.history.push('/item')
   }
   render() {
@@ -34,7 +39,7 @@ class EditCategoryContainer extends React.Component {
       <CategoryForm
         category={this.props.categories[curCategoryId]} 
         loading={this.props.loading}
-        onSubmit={this.props.onUpdateCategory} 
+        onSubmit={this.onUpdate} 
         onDelete={this.onDelete} />
     );
   }
