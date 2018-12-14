@@ -5,12 +5,20 @@ import CategoryForm from '../components/CategoryForm';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class NewCategoryContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onCreate = this.onCreate.bind(this);
+  }
+  onCreate(item){
+    this.props.onCreateCategory(item);
+    this.props.history.push('/item')
+  }
   render() {
     return (
       <CategoryForm
         category={this.props.category} 
         loading={this.props.loading}
-        onSubmit={this.props.onCreateCategory} />
+        onSubmit={this.onCreate} />
     );
   }
 }
