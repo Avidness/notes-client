@@ -11,7 +11,7 @@ class NewCategoryContainer extends React.Component {
   }
   onCreate(item){
     this.props.onCreateCategory(item);
-    this.props.history.push('/item')
+    this.props.history.push('/')
   }
   render() {
     return (

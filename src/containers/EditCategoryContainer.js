@@ -18,11 +18,11 @@ class EditCategoryContainer extends React.Component {
   }
   onDelete(item){
     this.props.onDeleteCategory(item);
-    this.props.history.push('/item')
+    this.props.history.push('/')
   }
   onUpdate(item){
     this.props.onUpdateCategory(item);
-    this.props.history.push('/item')
+    this.props.history.push('/')
   }
   render() {
     var curCategoryId = this.props.curCategoryId;
