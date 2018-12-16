@@ -1,39 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Tabs, Tab }  from '@material-ui/core';
-import { Folder } from '@material-ui/icons';
-import _ from 'lodash/core';
 
+import Header from '../components/Header';
 import Loading from '../components/Loading';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class MenuContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
+  }
   componentDidMount(){
     this.props.onFetchCategories();
   }
-  handleChange = (e, val) => {
+  handleCategoryChange = (e, val) => {
     this.props.onUpdateCurCategory(val);
   };
   render() {
-    let category_id = this.props.curCategoryId;
     if(this.props.loading){
-      return <Loading />;
+      return <Loading />
     }
     return (
-      <Tabs 
-        id='tab-container'
-        onChange={this.handleChange} 
-        value={category_id} 
-        scrollable>
-
-        {_.map(this.props.categories, function(cat, key) {
-          return <Tab 
-            key={cat.id}
-            value={cat.id}
-            label={cat.label}
-            icon={<Folder />} />
-        })}
-      </Tabs>
+      <Header 
+        categories={this.props.categories}
+        handleCategoryChange={this.handleCategoryChange} 
+        selectedCategoryId={this.props.curCategoryId} />
     );
   };
 }

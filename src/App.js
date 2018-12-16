@@ -3,7 +3,7 @@ import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-import Header from './components/Header';
+import HeaderContainer from './containers/HeaderContainer';
 import Footer from './components/Footer';
 import NewCategoryContainer from './containers/NewCategoryContainer';
 import CategoryContainer from './containers/EditCategoryContainer';
@@ -19,15 +19,15 @@ class App extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <Fragment>
-            <Header />
-              <Switch>
-                <Route path='/items' component={ItemListContainer} />
-                <Route path='/item/:itemid' component={EditItemContainer} />
-                <Route path='/newitem' component={NewItemContainer} />
-                <Route path='/newcategory' component={NewCategoryContainer} />
+            <HeaderContainer />
+            <Switch>
+              <Route path='/items' component={ItemListContainer} />
+              <Route path='/item/:itemid' component={EditItemContainer} />
+              <Route path='/newitem' component={NewItemContainer} />
+              <Route path='/newcategory' component={NewCategoryContainer} />
                 <Route path='/category' component={CategoryContainer} />
-                <Redirect to="/items" />
-              </Switch>
+              <Redirect to="/items" />
+            </Switch>
             <Footer />
           </Fragment>
         </BrowserRouter>

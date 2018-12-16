@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Icon, IconButton, Typography }  from '@material-ui/core';
-import { Assignment, CreateNewFolder, LibraryAdd, Edit } from '@material-ui/icons';
+import _ from 'lodash/core';
+import { AppBar, Toolbar, Icon, IconButton, Typography, Tabs, Tab }  from '@material-ui/core';
+import { Assignment, CreateNewFolder, LibraryAdd, Edit, Folder } from '@material-ui/icons';
 
-import MenuContainer from '../containers/MenuContainer';
 import '../static/styles/header.css';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <AppBar id='header'>
       <Toolbar>
@@ -17,9 +17,22 @@ const Header = () => {
           Notes
         </Typography>
 
-        <MenuContainer />
+        <Tabs 
+          id='tab-container'
+          onChange={props.handleCategoryChange} 
+          value={props.selectedCategoryId} 
+          scrollable>
 
-        <Link to={'/category'}>
+          {_.map(props.categories, function(cat, key) {
+            return <Tab 
+              key={cat.id}
+              value={cat.id}
+              label={cat.label}
+              icon={<Folder />} />
+          })}
+        </Tabs>
+
+        <Link to={'/category/' + props.selectedCategoryId}>
           <IconButton color="inherit" aria-label="Edit Category">
             <Edit />
           </IconButton>
