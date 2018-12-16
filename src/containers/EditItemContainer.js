@@ -26,10 +26,8 @@ class EditItemContainer extends React.Component {
     if(this.props.errorMessage){
       return <Typography color='error'>{this.props.errorMessage}</Typography>
     }
-    if(this.props.loading){
-      return <Loading />
-    }
-    if(this.props.items[id] === null){
+    if(this.props.loading
+      || this.props.items[id] === null){
       return <Loading />
     }
     let item = this.props.items[id];
