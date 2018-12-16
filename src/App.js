@@ -6,7 +6,7 @@ import store from './redux/store';
 import HeaderContainer from './containers/HeaderContainer';
 import Footer from './components/Footer';
 import NewCategoryContainer from './containers/NewCategoryContainer';
-import CategoryContainer from './containers/EditCategoryContainer';
+import EditCategoryContainer from './containers/EditCategoryContainer';
 import NewItemContainer from './containers/NewItemContainer';
 import EditItemContainer from './containers/EditItemContainer';
 import ItemListContainer from './containers/ItemListContainer';
@@ -25,7 +25,7 @@ class App extends React.Component {
               <Route path='/item/:itemid' component={EditItemContainer} />
               <Route path='/newitem' component={NewItemContainer} />
               <Route path='/newcategory' component={NewCategoryContainer} />
-                <Route path='/category' component={CategoryContainer} />
+              <Route path='/category' component={EditCategoryContainer} />
               <Redirect to="/items" />
             </Switch>
             <Footer />
