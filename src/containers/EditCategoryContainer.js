@@ -12,10 +12,6 @@ class EditCategoryContainer extends React.Component {
     this.onDelete = this.onDelete.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
   }
-  componentDidMount(){
-    var curCategoryId = this.props.curCategoryId;
-    this.props.onFetchCategory(curCategoryId);
-  }
   onDelete(item){
     this.props.onDeleteCategory(item);
     this.props.history.push('/')
@@ -25,19 +21,22 @@ class EditCategoryContainer extends React.Component {
     this.props.history.push('/')
   }
   render() {
-    var curCategoryId = this.props.curCategoryId;
+    let cat_id = this.props.match.params.catid;
     if(this.props.errorMessage){
       return <Typography color='error'>{this.props.errorMessage}</Typography>
     }
-    if(this.props.loading){
-      return <Loading />
+    if(this.props.categories
+      && this.props.categories[cat_id] === undefined){
+      return <Typography color='error'>Category Id not found</Typography>
     }
-    if(this.props.categories[curCategoryId] == null){
+    if(this.props.loading
+      || this.props.categories === null 
+      || this.props.categories[cat_id] === null){
       return <Loading />
     }
     return (
       <CategoryForm
-        category={this.props.categories[curCategoryId]} 
+        category={this.props.categories[cat_id]} 
         loading={this.props.loading}
         onSubmit={this.onUpdate} 
         onDelete={this.onDelete} />
@@ -48,12 +47,10 @@ class EditCategoryContainer extends React.Component {
 const mapStateToProps = state => ({
   loading: state.categories.loading,
   errorMessage: state.categories.errorMessage,
-  curCategoryId: state.categories.curCategoryId,
   categories: state.categories.list
 });
 
 const mapDispatchToProps = {
-  onFetchCategory: CategoryActions.fetchCategory,
   onUpdateCategory: CategoryActions.updateCategory,
   onDeleteCategory: CategoryActions.deleteCategory
 }

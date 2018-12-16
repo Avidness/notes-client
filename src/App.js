@@ -25,7 +25,7 @@ class App extends React.Component {
               <Route path='/item/:itemid' component={EditItemContainer} />
               <Route path='/newitem' component={NewItemContainer} />
               <Route path='/newcategory' component={NewCategoryContainer} />
-              <Route path='/category' component={EditCategoryContainer} />
+              <Route path='/category/:catid' component={EditCategoryContainer} />
               <Redirect to="/items" />
             </Switch>
             <Footer />
