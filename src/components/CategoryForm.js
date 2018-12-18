@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Input, IconButton } from '@material-ui/core';
 import { Save, Cancel, Delete } from '@material-ui/icons';
@@ -29,30 +29,28 @@ class CategoryForm extends React.Component {
         </IconButton> 
         : null);
     return (
-      <Fragment>
-        <Row>
-          <Col xs={12} sm={6}>
-            <Input name="label" 
-              placeholder='Label...'
-              onChange={this.onChange}
-              defaultValue={this.state.category.label}  />
-          </Col>
-          <Col xs={12} sm={6}>
-            <IconButton 
-              color="inherit" 
-              aria-label="Save" 
-              onClick={() => this.props.onSubmit(this.state.category)}>
-              <Save />
+      <Row className="m-0">
+        <Col xs={12} sm={6}>
+          <Input name="label" 
+            placeholder='Label...'
+            onChange={this.onChange}
+            defaultValue={this.state.category.label}  />
+        </Col>
+        <Col xs={12} sm={6}>
+          <IconButton 
+            color="inherit" 
+            aria-label="Save" 
+            onClick={() => this.props.onSubmit(this.state.category)}>
+            <Save />
+          </IconButton>
+          {deleteButton}
+          <Link to={'/items/'}>
+            <IconButton color="inherit" aria-label="Cancel">
+              <Cancel />
             </IconButton>
-            {deleteButton}
-            <Link to={'/items/'}>
-              <IconButton color="inherit" aria-label="Cancel">
-                <Cancel />
-              </IconButton>
-            </Link>
-          </Col>
-        </Row>
-      </Fragment>
+          </Link>
+        </Col>
+      </Row>
     );
   }
 }

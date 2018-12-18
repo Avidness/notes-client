@@ -7,7 +7,7 @@ import { Row, Col } from 'react-flexbox-grid';
 export const ItemRow = (props) => {
   let item = props.item;
   return (
-    <Row className="item-row">
+    <Row className="m-0">
       <Col xs={6} sm={4}>
         {item.label}
       </Col>
