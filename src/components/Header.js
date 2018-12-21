@@ -1,9 +1,27 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import _ from 'lodash/core';
-import { AppBar, Button, Toolbar, Icon, IconButton, Typography, Tabs, Tab, Menu, MenuItem }  from '@material-ui/core';
-import { Assignment, CreateNewFolder, LibraryAdd, Edit, Folder, Menu as MenuIcon, Delete } from '@material-ui/icons';
-
+import { 
+  AppBar, 
+  Button, 
+  Toolbar, 
+  Icon, 
+  IconButton, 
+  Typography, 
+  Tabs, 
+  Tab, 
+  Menu, 
+  MenuItem 
+}  from '@material-ui/core';
+import { 
+  Assignment, 
+  CreateNewFolder, 
+  LibraryAdd, 
+  Edit, 
+  Folder, 
+  Menu as MenuIcon, 
+  Delete 
+} from '@material-ui/icons';
 
 class Header extends React.Component {
   state = {
