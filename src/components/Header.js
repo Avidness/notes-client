@@ -63,11 +63,11 @@ class Header extends React.Component {
             open={Boolean(anchorEl)}
             onClose={this.handleMenuClose}
             color='inherit'>
-            <MenuItem onClick={() => this.handleMenuClick('/category/' + this.props.selectedCategoryId)}>
-              <IconButton color='inherit' aria-label='Edit Category'>
-                <Edit /> 
+            <MenuItem onClick={() => this.handleMenuClick('/newitem')}>
+              <IconButton color='inherit' aria-label='New Item'>
+                <LibraryAdd /> 
               </IconButton>
-              Edit Current Category
+              Add Item
             </MenuItem>
             <MenuItem onClick={() => this.handleMenuClick('/newcategory')}>
               <IconButton color='inherit' aria-label='New Category'>
@@ -75,17 +75,17 @@ class Header extends React.Component {
               </IconButton> 
               New Category
             </MenuItem>
-            <MenuItem onClick={() => this.handleMenuClick('/newitem')}>
-              <IconButton color='inherit' aria-label='New Item'>
-                <LibraryAdd /> 
+            <MenuItem onClick={() => this.handleMenuClick('/category/' + this.props.selectedCategoryId)}>
+              <IconButton color='inherit' aria-label='Edit Category'>
+                <Edit /> 
               </IconButton>
-              Add Item
+              Edit Current Category
             </MenuItem>
             <MenuItem onClick={this.props.handleDeleteCategory}>
               <IconButton color='inherit' aria-label='New Item'>
                 <Delete /> 
               </IconButton>
-              Delete Category
+              Delete Current Category
             </MenuItem>
           </Menu>
         </Toolbar>
