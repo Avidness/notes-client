@@ -4,7 +4,6 @@ import _ from 'lodash/core';
 import { AppBar, Button, Toolbar, Icon, IconButton, Typography, Tabs, Tab, Menu, MenuItem }  from '@material-ui/core';
 import { Assignment, CreateNewFolder, LibraryAdd, Edit, Folder, Menu as MenuIcon, Delete } from '@material-ui/icons';
 
-import '../static/styles/header.css';
 
 class Header extends React.Component {
   state = {
@@ -37,10 +36,10 @@ class Header extends React.Component {
           </Typography>
 
           <Tabs 
-            id='tab-container'
             onChange={this.props.handleCategoryChange} 
             value={this.props.selectedCategoryId} 
-            scrollable>
+            scrollable
+            style={{width:'100%'}}>
 
             {_.map(this.props.categories, function(cat, key) {
               return <Tab 

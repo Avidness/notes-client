@@ -3,6 +3,8 @@ import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { createGlobalStyle } from 'styled-components';
+import 'typeface-roboto-mono';
 
 import HeaderContainer from './containers/HeaderContainer';
 import Footer from './components/Footer';
@@ -12,16 +14,33 @@ import NewItemContainer from './containers/NewItemContainer';
 import EditItemContainer from './containers/EditItemContainer';
 import ItemListContainer from './containers/ItemListContainer';
 
-import './static/styles/App.css';
-
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
+    primary: {
+      main: '#303030',
+    },
     secondary: {
       main: '#5D6D7E',
     },
   },
 });
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Roboto Mono';
+    color: lightgray;
+    background-color:#303030;
+    margin: 0;
+    padding: 0;
+    padding-top: 100px;
+    text-align: center;
+  }
+  a {
+    color: inherit; 
+    text-decoration: inherit; 
+  }
+`;
 
 class App extends React.Component {
   render() {
@@ -30,6 +49,7 @@ class App extends React.Component {
         <MuiThemeProvider theme={theme}>
           <BrowserRouter>
             <Fragment>
+              <GlobalStyle />
               <HeaderContainer />
               <Switch>
                 <Route path='/items' component={ItemListContainer} />
