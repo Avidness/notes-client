@@ -9,12 +9,17 @@ class MenuContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    this.handleDeleteCategory = this.handleDeleteCategory.bind(this);
   }
   componentDidMount(){
     this.props.onFetchCategories();
   }
   handleCategoryChange = (e, val) => {
     this.props.onUpdateCurCategory(val);
+  };
+  handleDeleteCategory = () => {
+    let category = this.props.categories[this.props.curCategoryId];
+    this.props.onDeleteCategory(category);
   };
   render() {
     if(this.props.loading){
@@ -24,6 +29,7 @@ class MenuContainer extends React.Component {
       <Header 
         categories={this.props.categories}
         handleCategoryChange={this.handleCategoryChange} 
+        handleDeleteCategory={this.handleDeleteCategory} 
         selectedCategoryId={this.props.curCategoryId} />
     );
   };
@@ -37,7 +43,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onFetchCategories: CategoryActions.fetchCategories,
-  onUpdateCurCategory: CategoryActions.updateCurCategory
+  onUpdateCurCategory: CategoryActions.updateCurCategory,
+  onDeleteCategory: CategoryActions.deleteCategory
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer);
