@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Input, IconButton } from '@material-ui/core';
+import { IconButton, TextField } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
-import { Row, Col } from 'react-flexbox-grid';
 
 class CategoryForm extends React.Component {
   constructor(props) {
@@ -21,27 +20,27 @@ class CategoryForm extends React.Component {
   }
   render(){
     return (
-      <Row className="m-0">
-        <Col xs={12} sm={6}>
-          <Input name="label" 
-            placeholder='Label...'
-            onChange={this.onChange}
-            defaultValue={this.state.category.label}  />
-        </Col>
-        <Col xs={12} sm={6}>
-          <IconButton 
-            color="inherit" 
-            aria-label="Save" 
-            onClick={() => this.props.onSubmit(this.state.category)}>
-            <Save />
+      <Fragment>
+        <TextField name="label" 
+          placeholder='Label...'
+          onChange={this.onChange}
+          defaultValue={this.state.category.label}
+          variant='outlined'
+          fullWidth={true} />
+
+        <IconButton 
+          color="inherit" 
+          aria-label="Save" 
+          onClick={() => this.props.onSubmit(this.state.category)}>
+          <Save />
+        </IconButton>
+
+        <Link to={'/items/'}>
+          <IconButton color="inherit" aria-label="Cancel">
+            <Cancel />
           </IconButton>
-          <Link to={'/items/'}>
-            <IconButton color="inherit" aria-label="Cancel">
-              <Cancel />
-            </IconButton>
-          </Link>
-        </Col>
-      </Row>
+        </Link>
+      </Fragment>
     );
   }
 }

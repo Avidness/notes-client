@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Select, MenuItem, Input, IconButton } from '@material-ui/core';
+import { MenuItem, IconButton, TextField } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
-import { Row, Col } from 'react-flexbox-grid';
 import _ from 'lodash/core';
 
 class ItemForm extends React.Component {
@@ -26,44 +25,49 @@ class ItemForm extends React.Component {
   }
   render(){
     return (
-      <Row className="m-0">
-        <Col xs={12} sm={6} lg={3}>
-          <Input name="label" 
-            placeholder='Label...'
-            onChange={this.onChange}
-            defaultValue={this.state.item.label}  />
-        </Col>
-        <Col xs={12} sm={6} lg={3}>
-          <Input name="description" 
-            placeholder='Description...'
-            onChange={this.onChange}
-            defaultValue={this.state.item.description}  />
-        </Col>
-        <Col xs={12} sm={6} lg={3}>
-          <Select 
-            onChange={this.onCategoryChange}
-            value={this.state.item.category.id}>
-            {_.map(this.props.categories, function(cat, key) {
-              return <MenuItem key={key} value={cat.id}>{cat.label}</MenuItem>})
-            })}
-          </Select>
-        </Col>
-        <Col sm={6} lg={3}>
-          <IconButton 
-            color="inherit" 
-            aria-label="Save" 
-            onClick={() => this.props.onSubmit(this.state.item)}>
-            <Save />
+      <Fragment>
+        <TextField 
+          name='label' 
+          placeholder='Label...'
+          onChange={this.onChange}
+          defaultValue={this.state.item.label}
+          variant='outlined'
+          fullWidth={true} />
+
+        <TextField 
+          select
+          onChange={this.onCategoryChange}
+          value={this.state.item.category.id}
+          variant='outlined'
+          fullWidth={true}>
+          {_.map(this.props.categories, function(cat, key) {
+            return <MenuItem key={key} value={cat.id}>{cat.label}</MenuItem>})
+          })}
+        </TextField>
+
+        <TextField 
+          name='description' 
+          placeholder='Description...'
+          onChange={this.onChange}
+          defaultValue={this.state.item.description} 
+          variant='outlined'
+          multiline
+          rows="4"
+          fullWidth={true} />
+
+        <IconButton 
+          color="inherit" 
+          aria-label="Save" 
+          onClick={() => this.props.onSubmit(this.state.item)}>
+          <Save />
+        </IconButton>
+
+        <Link to={'/items/'}>
+          <IconButton color="inherit" aria-label="Cancel">
+            <Cancel />
           </IconButton>
-        </Col>
-        <Col sm={6} lg={3}>
-          <Link to={'/items/'}>
-            <IconButton color="inherit" aria-label="Cancel">
-              <Cancel />
-            </IconButton>
-          </Link>
-        </Col>
-      </Row>
+        </Link>
+      </Fragment>
     );
   }
 }
