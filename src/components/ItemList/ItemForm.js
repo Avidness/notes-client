@@ -58,7 +58,7 @@ class ItemForm extends React.Component {
           name='description'
           text={this.state.item.description}
           onChange={this.onDescChange}
-          style={{height:'50vh'}} />
+          style={{height:'50vh', textAlign:'left'}} />
 
         <IconButton 
           color="inherit" 
