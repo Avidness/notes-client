@@ -3,19 +3,28 @@ import { Link } from 'react-router-dom';
 import { MenuItem, IconButton, TextField } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
 import _ from 'lodash/core';
+import Editor from 'react-medium-editor';
+require('medium-editor/dist/css/medium-editor.css');
+require('medium-editor/dist/css/themes/default.css');
 
 class ItemForm extends React.Component {
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
+    this.onLabelChange = this.onLabelChange.bind(this);
+    this.onDescChange = this.onDescChange.bind(this);
     this.onCategoryChange = this.onCategoryChange.bind(this);
 
     const edit_item = Object.assign({}, this.props.item);
     this.state = { item: edit_item };
   }
-  onChange(e) {
+  onLabelChange(e) {
     let edited_item = this.state.item;
     edited_item[e.target.name] = e.target.value;
+    this.setState({ item: edited_item});
+  }
+  onDescChange(newText){
+    let edited_item = this.state.item;
+    edited_item.description = newText;
     this.setState({ item: edited_item});
   }
   onCategoryChange(e){
@@ -23,15 +32,15 @@ class ItemForm extends React.Component {
     edited_item.category.id = e.target.value;
     this.setState({ item: edited_item});
   }
+
   render(){
     return (
       <Fragment>
         <TextField 
           name='label' 
           placeholder='Label...'
-          onChange={this.onChange}
+          onChange={this.onLabelChange}
           defaultValue={this.state.item.label}
-          variant='outlined'
           fullWidth={true} />
 
         <TextField 
@@ -45,15 +54,11 @@ class ItemForm extends React.Component {
           })}
         </TextField>
 
-        <TextField 
-          name='description' 
-          placeholder='Description...'
-          onChange={this.onChange}
-          defaultValue={this.state.item.description} 
-          variant='outlined'
-          multiline
-          rows="4"
-          fullWidth={true} />
+        <Editor
+          name='description'
+          text={this.state.item.description}
+          onChange={this.onDescChange}
+          style={{height:'50vh'}} />
 
         <IconButton 
           color="inherit" 
