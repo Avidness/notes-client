@@ -5,6 +5,7 @@ import store from './redux/store';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { createGlobalStyle } from 'styled-components';
 import 'typeface-roboto-mono';
+import 'toastr/build/toastr.css';
 
 import HeaderContainer from './containers/HeaderContainer';
 import Footer from './components/Footer';

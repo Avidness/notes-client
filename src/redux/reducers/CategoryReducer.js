@@ -1,4 +1,5 @@
 import * as Actions from '../actions/CategoryActions';
+import toastr from 'toastr';
 
 const initialState = {
   list: null,
@@ -38,6 +39,7 @@ export default function(state = initialState, action) {
     case Actions.NEW_CATEGORY:
       let add_list = Object.assign({}, state.list);
       add_list[action.payload.id] = action.payload;
+      toastr.success('Success');
       return {
         ...state,
         list: add_list,
@@ -46,6 +48,7 @@ export default function(state = initialState, action) {
     case Actions.UPDATE_CATEGORY:
       let update_list = Object.assign({}, state.list);
       update_list[action.payload.id] = action.payload;
+      toastr.success('Success');
       return {
         ...state,
         list: update_list,
@@ -54,6 +57,7 @@ export default function(state = initialState, action) {
     case Actions.DELETE_CATEGORY:
       let items = Object.assign({}, state.list);
       delete items[action.payload];
+      toastr.success('Success');
       return {
         ...state,
         list: items,
@@ -65,6 +69,7 @@ export default function(state = initialState, action) {
         loading: true
       };
     case Actions.CATEGORY_FAIL:
+      toastr.error('Error');
       return {
         ...state,
         errorMessage: 'Category: ' + action.payload.toString(),
