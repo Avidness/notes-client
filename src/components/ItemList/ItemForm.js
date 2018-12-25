@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MenuItem, IconButton, TextField } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
 import _ from 'lodash/core';
+import moment from 'moment';
 import Editor from 'react-medium-editor';
 require('medium-editor/dist/css/medium-editor.css');
 require('medium-editor/dist/css/themes/default.css');
@@ -36,6 +37,11 @@ class ItemForm extends React.Component {
   render(){
     return (
       <Fragment>
+        
+        {(this.state.item.lastModifiedAt 
+        ? moment(this.state.item.lastModifiedAt).format('llll') 
+        : null)}
+
         <TextField 
           name='label' 
           placeholder='Label...'

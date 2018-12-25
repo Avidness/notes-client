@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton, TextField } from '@material-ui/core';
 import { Save, Cancel } from '@material-ui/icons';
+import moment from 'moment';
 
 class CategoryForm extends React.Component {
   constructor(props) {
@@ -21,6 +22,11 @@ class CategoryForm extends React.Component {
   render(){
     return (
       <Fragment>
+
+        {(this.state.category.lastModifiedAt 
+        ? moment(this.state.category.lastModifiedAt).format('llll') 
+        : null)}
+
         <TextField name="label" 
           placeholder='Label...'
           onChange={this.onChange}
