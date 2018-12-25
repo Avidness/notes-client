@@ -20,24 +20,25 @@ class CategoryForm extends React.Component {
     this.setState({ item: edit_category});
   }
   render(){
+    let category = this.state.category;
     return (
       <Fragment>
 
-        {(this.state.category.lastModifiedAt 
-        ? moment(this.state.category.lastModifiedAt).format('llll') 
+        {(category.lastModifiedAt 
+        ? moment(category.lastModifiedAt).format('llll') 
         : null)}
 
         <TextField name="label" 
           placeholder='Label...'
           onChange={this.onChange}
-          defaultValue={this.state.category.label}
+          defaultValue={category.label}
           variant='outlined'
           fullWidth={true} />
 
         <IconButton 
           color="inherit" 
           aria-label="Save" 
-          onClick={() => this.props.onSubmit(this.state.category)}>
+          onClick={() => this.props.onSubmit(category)}>
           <Save />
         </IconButton>
 

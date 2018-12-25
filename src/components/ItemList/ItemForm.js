@@ -35,24 +35,25 @@ class ItemForm extends React.Component {
   }
 
   render(){
+    let item = this.state.item;
     return (
       <Fragment>
         
-        {(this.state.item.lastModifiedAt 
-        ? moment(this.state.item.lastModifiedAt).format('llll') 
+        {(item.lastModifiedAt 
+        ? moment(item.lastModifiedAt).format('llll') 
         : null)}
 
         <TextField 
           name='label' 
           placeholder='Label...'
           onChange={this.onLabelChange}
-          defaultValue={this.state.item.label}
+          defaultValue={item.label}
           fullWidth={true} />
 
         <TextField 
           select
           onChange={this.onCategoryChange}
-          value={this.state.item.category.id}
+          value={item.category.id}
           variant='outlined'
           fullWidth={true}>
           {_.map(this.props.categories, function(cat, key) {
@@ -62,14 +63,14 @@ class ItemForm extends React.Component {
 
         <Editor
           name='description'
-          text={this.state.item.description}
+          text={item.description}
           onChange={this.onDescChange}
           style={{height:'50vh', textAlign:'left'}} />
 
         <IconButton 
           color="inherit" 
           aria-label="Save" 
-          onClick={() => this.props.onSubmit(this.state.item)}>
+          onClick={() => this.props.onSubmit(item)}>
           <Save />
         </IconButton>
 
