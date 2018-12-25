@@ -23,7 +23,6 @@ class NewItemContainer extends React.Component {
   }
   onCreate(item){
     this.props.onCreateItem(item);
-    this.props.history.push('/');
   }
   render() {
     if(this.props.errorMessage){

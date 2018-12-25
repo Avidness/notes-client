@@ -13,7 +13,6 @@ class EditCategoryContainer extends React.Component {
   }
   onUpdate(item){
     this.props.onUpdateCategory(item);
-    this.props.history.push('/');
   }
   render() {
     let cat_id = this.props.match.params.catid;

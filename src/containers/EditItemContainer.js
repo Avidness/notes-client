@@ -19,7 +19,6 @@ class EditItemContainer extends React.Component {
   }
   onUpdate(item){
     this.props.onUpdateItem(item);
-    this.props.history.push('/');
   }
   render() {
     var id = this.props.match.params.itemid;
