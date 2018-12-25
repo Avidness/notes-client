@@ -4,6 +4,7 @@ import { IconButton, Card } from '@material-ui/core';
 import { Edit, Delete } from '@material-ui/icons';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const RowWrapper = styled.section`
   padding: .5em;
@@ -21,7 +22,7 @@ export const ItemRow = (props) => {
           </Col>
 
           <Col xs={6} sm={4}>
-            {item.description}
+            {moment(item.lastModifiedAt).format('llll')}
           </Col>
 
           <Col xs={12} sm={4}>
