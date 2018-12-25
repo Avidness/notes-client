@@ -25,7 +25,7 @@ class CategoryForm extends React.Component {
       <Fragment>
 
         {(category.lastModifiedAt 
-        ? moment(category.lastModifiedAt).format('llll') 
+        ? moment.utc(category.lastModifiedAt).local().format('llll')
         : null)}
 
         <TextField name="label" 

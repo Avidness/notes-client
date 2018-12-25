@@ -22,7 +22,7 @@ export const ItemRow = (props) => {
           </Col>
 
           <Col xs={6} sm={4}>
-            {moment(item.lastModifiedAt).format('llll')}
+            {moment.utc(item.lastModifiedAt).local().format('llll')}
           </Col>
 
           <Col xs={12} sm={4}>

@@ -40,7 +40,7 @@ class ItemForm extends React.Component {
       <Fragment>
         
         {(item.lastModifiedAt 
-        ? moment(item.lastModifiedAt).format('llll') 
+        ? moment.utc(item.lastModifiedAt).local().format('llll')
         : null)}
 
         <TextField 
