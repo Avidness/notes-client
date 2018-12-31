@@ -12,8 +12,7 @@ class EditItemContainer extends React.Component {
     this.onUpdate = this.onUpdate.bind(this);
 
     var id = this.props.match.params.itemid;
-    if(this.props.items === null 
-      || this.props.items[id] === null){
+    if(this.props.items === null){
       this.props.onFetchItem(id);
     }
   }
@@ -25,11 +24,10 @@ class EditItemContainer extends React.Component {
     if(this.props.errorMessage){
       return <Typography color='error'>{this.props.errorMessage}</Typography>
     }
-    if(this.props.loading
-      || this.props.items[id] === null){
+    if(this.props.loading){
       return <Loading />
     }
-    let item = this.props.items[id];
+    let item = this.props.items.find(x => x.id === id);
     return (
       <ItemForm
         item={item} 

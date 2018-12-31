@@ -10,31 +10,22 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case Actions.FETCH_ITEMS:
-      let new_list = action.payload
-        .reduce(function(result, item) {
-          result[item.id] = item;
-          return result;
-        }, {});
       return {
         ...state,
-        list: new_list,
+        list: action.payload,
         loading: false
       };
     case Actions.FETCH_ITEM:
-      let append_list = (state.list 
-        ? Object.assign({}, state.list) 
-        : {});
-      append_list[action.payload.id] = action.payload;
+      let append_list = (state.list ? state.list : []);
+      append_list.push(action.payload);
       return {
         ...state,
         list: append_list,
         loading: false
       };
     case Actions.NEW_ITEM:
-      let add_list = (state.list 
-        ? Object.assign({}, state.list) 
-        : {});
-      add_list[action.payload.id] = action.payload;
+      let add_list = (state.list ? state.list : []);
+      add_list.push(action.payload);
       toastr.success('Success');
       return {
         ...state,
@@ -42,8 +33,9 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.UPDATE_ITEM:
-      let update_list = Object.assign({}, state.list);
-      update_list[action.payload.id] = action.payload;
+      let update_list = (state.list ? state.list : []);
+      update_list = update_list.map(x => 
+        (x.id === action.payload.id ? action.payload : x));
       toastr.success('Success');
       return {
         ...state,
@@ -51,9 +43,8 @@ export default function(state = initialState, action) {
         loading: false
       };
     case Actions.DELETE_ITEM:
-      let items = Object.assign({}, state.list);
-      delete items[action.payload];
-      toastr.success('Success');
+      let items = (state.list ? state.list : []);
+      items = items.filter(x => x.id !== action.payload);
       return {
         ...state,
         list: items,
@@ -65,7 +56,7 @@ export default function(state = initialState, action) {
         loading: true
       };
     case Actions.ITEM_FAIL:
-    toastr.error('Error');
+      toastr.error('Error');
       return {
         ...state,
         errorMessage: 'Item: ' + action.payload.toString(),
