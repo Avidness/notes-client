@@ -16,6 +16,7 @@
     "lodash": "^4.17.11",
     "moment": "^2.23.0",
     "react": "^16.4.2",
+    "react-beautiful-dnd": "^10.0.3",
     "react-dom": "^16.4.2",
     "react-flexbox-grid": "^2.1.2",
     "react-medium-editor": "^1.8.1",

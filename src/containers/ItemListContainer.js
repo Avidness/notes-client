@@ -1,12 +1,16 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
 import Loading from '../components/Loading';
-import ItemList from '../components/ItemList/ItemList';
+import SortableItemList from '../components/ItemList/SortableItemList';
 import * as ItemActions from '../redux/actions/ItemActions';
 
 class ItemListContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleReorder = this.handleReorder.bind(this);
+  }
   componentDidMount(){
     if(this.props.curCategoryId !== ''){
       this.props.onFetchItems(this.props.curCategoryId);
@@ -17,6 +21,16 @@ class ItemListContainer extends React.Component {
       this.props.onFetchItems(this.props.curCategoryId);
     }
   }
+  handleReorder(list, oldIndex, newIndex){
+    this.props.onUpdateOrdering(list[oldIndex], oldIndex, newIndex)
+    
+    const ordered_list = Array.from(list);
+    const [removed] = ordered_list.splice(oldIndex, 1);
+    ordered_list.splice(newIndex, 0, removed);
+    
+    this.props.onUpdateItemList(ordered_list);
+  }
+  
   render() {
     if(this.props.errorMessage){
       return <Typography color='error'>{this.props.errorMessage}</Typography>
@@ -24,12 +38,12 @@ class ItemListContainer extends React.Component {
     if(this.props.loading){
       return <Loading />
     }
+    let items = this.props.items;
     return (
-      <Fragment>
-        <ItemList
-          items={this.props.items}
-          onDeleteItem={this.props.onDeleteItem} />
-      </Fragment>
+      <SortableItemList 
+        items={items} 
+        onDeleteItem={this.props.onDeleteItem}
+        handleReorder={this.handleReorder} />
     );
   }
 }
@@ -44,7 +58,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onFetchItems: ItemActions.fetchItems,
-  onDeleteItem: ItemActions.deleteItem
+  onDeleteItem: ItemActions.deleteItem,
+  onUpdateItemList: ItemActions.updateItemList,
+  onUpdateOrdering: ItemActions.updateOrdering
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemListContainer);

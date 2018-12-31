@@ -4,6 +4,8 @@ export const FETCH_ITEM = 'FETCH_ITEM';
 export const NEW_ITEM = 'NEW_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const UPDATE_ITEM_LIST = 'UPDATE_ITEM_LIST';
+export const UPDATE_ITEM_ORDER = 'UPDATE_ITEM_ORDER';
 export const SET_LOADING_ITEM = 'SET_LOADING_ITEM';
 
 export const fetchItems = (category_id) => dispatch => {
@@ -111,4 +113,25 @@ export const deleteItem = item_to_delete => dispatch => {
       payload: e
     })
   });
+};
+
+export const updateItemList = newItems => dispatch => {
+  dispatch({
+    type: UPDATE_ITEM_LIST,
+    payload: newItems
+  })
+};
+
+export const updateOrdering = (item, oldIndex, newIndex) => dispatch => {
+  // TODO: update ordering via API
+
+  // Item getting updated
+  //console.log(item);
+
+  // old index, new index
+  //console.log(oldIndex + " " + newIndex);
+  dispatch({
+    type: UPDATE_ITEM_ORDER,
+    payload: item
+  })
 };

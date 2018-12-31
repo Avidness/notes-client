@@ -50,6 +50,16 @@ export default function(state = initialState, action) {
         list: items,
         loading: false
       };
+    case Actions.UPDATE_ITEM_LIST:
+      return {
+        ...state,
+        list: action.payload
+      };
+    case Actions.UPDATE_ITEM_ORDER:
+      return {
+        ...state,
+       //list: action.payload
+      };
     case Actions.SET_LOADING_ITEM:
       return {
         ...state,
