@@ -123,15 +123,25 @@ export const updateItemList = newItems => dispatch => {
 };
 
 export const updateOrdering = (item, oldIndex, newIndex) => dispatch => {
-  // TODO: update ordering via API
+  if(oldIndex === newIndex){
+    return;
+  }
 
-  // Item getting updated
-  //console.log(item);
-
-  // old index, new index
-  //console.log(oldIndex + " " + newIndex);
-  dispatch({
-    type: UPDATE_ITEM_ORDER,
-    payload: item
+  fetch(`http://localhost:5000/api/item/updateorder/${item.id}/${item.category.id}/${oldIndex}/${newIndex}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    }
   })
+  .then(res =>
+    dispatch({
+      type: UPDATE_ITEM_ORDER,
+      payload: res
+    })
+  ).catch((e) => {
+    dispatch({
+      type: ITEM_FAIL,
+      payload: e
+    })
+  });
 };

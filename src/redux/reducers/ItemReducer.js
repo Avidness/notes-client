@@ -56,9 +56,9 @@ export default function(state = initialState, action) {
         list: action.payload
       };
     case Actions.UPDATE_ITEM_ORDER:
+      // No notification needed unless it fails
       return {
-        ...state,
-       //list: action.payload
+        ...state
       };
     case Actions.SET_LOADING_ITEM:
       return {
