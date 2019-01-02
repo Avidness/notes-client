@@ -57,10 +57,12 @@ export default function(state = initialState, action) {
     case Actions.DELETE_CATEGORY:
       let items = Object.assign({}, state.list);
       delete items[action.payload];
+      let selectedCategory = Object.keys(items)[0];
       toastr.success('Success');
       return {
         ...state,
         list: items,
+        curCategoryId: selectedCategory,
         loading: false
       };
     case Actions.SET_LOADING_CATEGORY:
