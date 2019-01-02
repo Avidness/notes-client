@@ -1,5 +1,5 @@
 import * as Actions from '../actions/ItemActions';
-import toastr from 'toastr';
+import toast, { Types } from '../../util/toasts';
 
 const initialState = {
   list: null,
@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
     case Actions.NEW_ITEM:
       let add_list = (state.list ? state.list : []);
       add_list.push(action.payload);
-      toastr.success('Success');
+      toast(Types.success, 'Success');
       return {
         ...state,
         list: add_list,
@@ -36,7 +36,7 @@ export default function(state = initialState, action) {
       let update_list = (state.list ? state.list : []);
       update_list = update_list.map(x => 
         (x.id === action.payload.id ? action.payload : x));
-      toastr.success('Success');
+      toast(Types.success, 'Success');
       return {
         ...state,
         list: update_list,
@@ -45,6 +45,7 @@ export default function(state = initialState, action) {
     case Actions.DELETE_ITEM:
       let items = (state.list ? state.list : []);
       items = items.filter(x => x.id !== action.payload);
+      toast(Types.success, 'Success');
       return {
         ...state,
         list: items,
@@ -66,7 +67,7 @@ export default function(state = initialState, action) {
         loading: true
       };
     case Actions.ITEM_FAIL:
-      toastr.error('Error');
+      toast(Types.error, action.payload.toString(), 'Error');
       return {
         ...state,
         errorMessage: 'Item: ' + action.payload.toString(),
