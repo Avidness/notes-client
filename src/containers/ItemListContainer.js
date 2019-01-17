@@ -10,6 +10,7 @@ class ItemListContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleReorder = this.handleReorder.bind(this);
+    this.handleItemDelete = this.handleItemDelete.bind(this);
   }
   componentDidMount(){
     if(this.props.curCategoryId !== ''){
@@ -30,6 +31,11 @@ class ItemListContainer extends React.Component {
     
     this.props.onUpdateItemList(ordered_list);
   }
+  handleItemDelete(item){
+    if(window.confirm("Are you sure you want to delete this item?")){
+      this.props.onDeleteItem(item);
+    }
+  }
   
   render() {
     if(this.props.errorMessage){
@@ -42,7 +48,7 @@ class ItemListContainer extends React.Component {
     return (
       <SortableItemList 
         items={items} 
-        onDeleteItem={this.props.onDeleteItem}
+        onDeleteItem={this.handleItemDelete}
         handleReorder={this.handleReorder} />
     );
   }
