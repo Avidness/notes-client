@@ -18,8 +18,10 @@ class MenuContainer extends React.Component {
     this.props.onUpdateCurCategory(val);
   };
   handleDeleteCategory = () => {
-    let category = this.props.categories[this.props.curCategoryId];
-    this.props.onDeleteCategory(category);
+    if(window.confirm("Are you sure you want to delete this category?")){
+      let category = this.props.categories[this.props.curCategoryId];
+      this.props.onDeleteCategory(category);
+    }
   };
   render() {
     if(this.props.loading){
