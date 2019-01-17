@@ -48,7 +48,7 @@ class ItemListContainer extends React.Component {
     return (
       <SortableItemList 
         items={items} 
-        onDeleteItem={this.handleItemDelete}
+        handleItemDelete={this.handleItemDelete}
         handleReorder={this.handleReorder} />
     );
   }

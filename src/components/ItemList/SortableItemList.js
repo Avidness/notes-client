@@ -42,7 +42,7 @@ class SortableItemList extends React.Component {
                       >
                         <ItemRow key={item.id} 
                           item={item}
-                          onDeleteItem={this.props.onDeleteItem} />
+                          handleItemDelete={this.props.handleItemDelete} />
                       </div>
                     )}
                   </Draggable>

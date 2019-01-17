@@ -34,7 +34,7 @@ export const ItemRow = (props) => {
             <IconButton 
               color='inherit' 
               aria-label='Edit'
-              onClick={() => props.onDeleteItem(item)}>
+              onClick={() => props.handleItemDelete(item)}>
               <Delete />
             </IconButton>
           </Col>
