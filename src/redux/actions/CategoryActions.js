@@ -10,7 +10,7 @@ export const UPDATE_CUR_CATEGORY = 'UPDATE_CUR_CATEGORY';
 export const fetchCategories = () => dispatch => {
   dispatch({ type: SET_LOADING_CATEGORY });
   
-  fetch('http://localhost:5000/api/category', {
+  fetch('/api/category', {
     method: 'GET',
   })
   .then(res => res.json())
@@ -30,7 +30,7 @@ export const fetchCategories = () => dispatch => {
 export const fetchCategory = (cat_id) => dispatch => {
   dispatch({ type: SET_LOADING_CATEGORY });
 
-  fetch('http://localhost:5000/api/category/' + cat_id, {
+  fetch('/api/category/' + cat_id, {
     method: 'GET',
   })
   .then(res => res.json())
@@ -59,7 +59,7 @@ export const updateCurCategory = newCategoryId => dispatch => {
 export const createCategory = category_to_create => dispatch => {
   dispatch({ type: SET_LOADING_CATEGORY });
 
-  fetch('http://localhost:5000/api/category', {
+  fetch('/api/category', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -83,7 +83,7 @@ export const createCategory = category_to_create => dispatch => {
 export const updateCategory = category_to_update => dispatch => {
   dispatch({ type: SET_LOADING_CATEGORY });
   
-  fetch('http://localhost:5000/api/category/' + category_to_update.id, {
+  fetch('/api/category/' + category_to_update.id, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
@@ -107,7 +107,7 @@ export const updateCategory = category_to_update => dispatch => {
 export const deleteCategory = category_to_delete => dispatch => {
   dispatch({ type: SET_LOADING_CATEGORY });
   
-  fetch('http://localhost:5000/api/category/' + category_to_delete.id, {
+  fetch('/api/category/' + category_to_delete.id, {
     method: 'DELETE'
   })
   .then((response) => {

@@ -10,8 +10,7 @@ export const SET_LOADING_ITEM = 'SET_LOADING_ITEM';
 
 export const fetchItems = (category_id) => dispatch => {
   dispatch({ type: SET_LOADING_ITEM });
-  
-  fetch('http://localhost:5000/api/item/category/' + category_id, {
+  fetch('/api/item/category/' + category_id, {
     method: 'GET',
   })
   .then(res => res.json())
@@ -31,7 +30,7 @@ export const fetchItems = (category_id) => dispatch => {
 export const fetchItem = (item_id) => dispatch => {
   dispatch({ type: SET_LOADING_ITEM });
 
-  fetch('http://localhost:5000/api/item/' + item_id, {
+  fetch('/api/item/' + item_id, {
     method: 'GET',
   })
   .then(res => res.json())
@@ -51,7 +50,7 @@ export const fetchItem = (item_id) => dispatch => {
 export const createItem = item_to_create => dispatch => {
   dispatch({ type: SET_LOADING_ITEM });
 
-  fetch('http://localhost:5000/api/item', {
+  fetch('/api/item', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -75,7 +74,7 @@ export const createItem = item_to_create => dispatch => {
 export const updateItem = item_to_update => dispatch => {
   dispatch({ type: SET_LOADING_ITEM });
 
-  fetch('http://localhost:5000/api/item/' + item_to_update.id, {
+  fetch('/api/item/' + item_to_update.id, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
@@ -99,7 +98,7 @@ export const updateItem = item_to_update => dispatch => {
 export const deleteItem = item_to_delete => dispatch => {
   dispatch({ type: SET_LOADING_ITEM });
   
-  fetch('http://localhost:5000/api/item/' + item_to_delete.id, {
+  fetch('/api/item/' + item_to_delete.id, {
     method: 'DELETE'
   })
   .then((response) => {
@@ -127,7 +126,7 @@ export const updateOrdering = (item, oldIndex, newIndex) => dispatch => {
     return;
   }
 
-  fetch(`http://localhost:5000/api/item/updateorder/${item.id}/${item.category.id}/${oldIndex}/${newIndex}`, {
+  fetch(`/api/item/updateorder/${item.id}/${item.category.id}/${oldIndex}/${newIndex}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
