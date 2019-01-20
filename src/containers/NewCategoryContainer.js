@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CategoryForm from '../components/CategoryForm';
+import CategoryForm from '../components/Categories/CategoryForm';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class NewCategoryContainer extends React.Component {

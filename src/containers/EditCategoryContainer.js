@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
 import Loading from '../components/Loading';
-import CategoryForm from '../components/CategoryForm';
+import CategoryForm from '../components/Categories/CategoryForm';
 import * as CategoryActions from '../redux/actions/CategoryActions';
 
 class EditCategoryContainer extends React.Component {

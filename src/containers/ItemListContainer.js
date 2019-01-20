@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
 import Loading from '../components/Loading';
-import SortableItemList from '../components/ItemList/SortableItemList';
+import SortableItemList from '../components/Items/SortableItemList';
 import * as ItemActions from '../redux/actions/ItemActions';
 
 class ItemListContainer extends React.Component {

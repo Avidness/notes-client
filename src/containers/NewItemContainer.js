@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
 import Loading from '../components/Loading';
-import ItemForm from '../components/ItemList/ItemForm';
+import ItemForm from '../components/Items/ItemForm';
 import * as ItemActions from '../redux/actions/ItemActions';
 
 class NewItemContainer extends React.Component {
