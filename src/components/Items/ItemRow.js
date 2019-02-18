@@ -6,41 +6,49 @@ import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import moment from 'moment';
 
-const RowWrapper = styled.section`
+const CardWrapper = styled.section`
   padding: .5em;
-  margin: 0;
+`;
+
+const RowWrapper = styled.section`
+  line-height: 60px;
+  @media (max-width: 768px) {
+    line-height: 30px;
+  }
 `;
 
 export const ItemRow = (props) => {
   let item = props.item;
   return (
-    <RowWrapper>
+    <CardWrapper>
       <Card raised={true}>
-        <Row>
-          <Col xs={6} sm={4}>
-            {item.label}
-          </Col>
+        <RowWrapper>
+          <Row>
+            <Col xs={12} sm={4}>
+              {item.label}
+            </Col>
 
-          <Col xs={6} sm={4}>
-            {moment.utc(item.lastModifiedAt).local().format('llll')}
-          </Col>
+            <Col xs={12} sm={4}>
+              {moment.utc(item.lastModifiedAt).local().format('llll')}
+            </Col>
 
-          <Col xs={12} sm={4}>
-            <Link to={'/item/' + item.id}>
-              <IconButton color='inherit' aria-label='Edit'>
-                <Edit />
+            <Col xs={12} sm={4}>
+              <Link to={'/item/' + item.id}>
+                <IconButton color='inherit' aria-label='Edit'>
+                  <Edit />
+                </IconButton>
+              </Link>
+              <IconButton 
+                color='inherit' 
+                aria-label='Edit'
+                onClick={() => props.handleItemDelete(item)}>
+                <Delete />
               </IconButton>
-            </Link>
-            <IconButton 
-              color='inherit' 
-              aria-label='Edit'
-              onClick={() => props.handleItemDelete(item)}>
-              <Delete />
-            </IconButton>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </RowWrapper>
       </Card>
-    </RowWrapper>
+    </CardWrapper>
   );
 }
 
